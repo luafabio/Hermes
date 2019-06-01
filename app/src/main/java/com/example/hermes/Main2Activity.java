@@ -1,5 +1,6 @@
 package com.example.hermes;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -34,6 +35,8 @@ public class Main2Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+
+
 
         NumberPicker np = (NumberPicker) findViewById(R.id.np);
 
@@ -84,6 +87,7 @@ public class Main2Activity extends AppCompatActivity {
     }
 
     public Stop getSelectedStop() {
+
         return (Stop) spinner.getSelectedItem();
     }
 
@@ -95,14 +99,13 @@ public class Main2Activity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 Toast.makeText(Main2Activity.this, "Alarma creada de manera exitosa", Toast.LENGTH_SHORT).show();
-                //llevar al activityMain
+                startActivity(new Intent(Main2Activity.this, MainActivity.class));
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
                 Toast.makeText(Main2Activity.this, "Error al crear la alarma", Toast.LENGTH_SHORT).show();
-                //llevar al activityMain
-
+                startActivity(new Intent(Main2Activity.this, MainActivity.class));
             }
         });
     }
@@ -111,9 +114,11 @@ public class Main2Activity extends AppCompatActivity {
 }
 
 //TODO:
-// consumir los datos correctos. NICO
+// consumir los datos correctos. NICO - HECHO - REVISAR
+// Agregar botón fecha para retornar a la lista de alarmas. NICO - HECHO
+// cuando creo la alarma que lleve para atras y me la visualice. NICO - HECHO
 // Acomodar la visualizacion de las pantallas. NICO
-// cuando creo la alarma que lleve para atras y me la visualice. NICO
+// Acomodar las vistas, en manera relativa si vemos que es mejor. o sino ver la mejor manera de renderizar los xml. NICO
 // Agregar identificador de usuario. HARDCODE
 // ver la mejor manera de ser notificado por la aplicacion cuando la alarma se encuentra a emitir. LUIS
-// Acomodar las vistas, en manera relativa si vemos que es mejor. o sino ver la mejor manera de renderizar los xml. NICO
+

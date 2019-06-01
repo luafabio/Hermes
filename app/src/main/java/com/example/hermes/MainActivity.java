@@ -25,6 +25,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(mToolbar);
+        //getSupportActionBar().setTitle("Hola");
+        //getSupportActionBar().setLogo();
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -48,8 +54,7 @@ public class MainActivity extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, Main2Activity.class);
-                startActivity(intent);
+                startActivity(new Intent(MainActivity.this, Main2Activity.class));
             }
         });
     }

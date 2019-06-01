@@ -6,14 +6,22 @@ public class Bing {
     private int id_stop;
     private int time;
     private String status;
+    private String name_stop;
 
     public Bing() {
     }
 
-    public Bing(int id_user, int id_stop, int time) {
+    public Bing(int id_user, int id_stop, int time){
         this.id_user = id_user;
         this.id_stop = id_stop;
         this.time = time;
+    }
+
+    public Bing(int id_user, int id_stop, int time, String name_stop) {
+        this.id_user = id_user;
+        this.id_stop = id_stop;
+        this.time = time;
+        this.name_stop = name_stop;
     }
 
     public int getId_user() {
@@ -27,6 +35,8 @@ public class Bing {
     public int getTime() {
         return time;
     }
+
+    public String getName_stop() { return name_stop; }
 
     public String getStatus() {
         return status;
@@ -47,4 +57,6 @@ public class Bing {
     public void setStatus(String status) {
         this.status = status;
     }
+
+//    public void setName_stop(String name_stop) { this.name_stop = name_stop; }
 }

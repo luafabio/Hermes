@@ -26,7 +26,8 @@ public class BingAdapter extends RecyclerView.Adapter<BingAdapter.BingHolder> {
     @Override
     public void onBindViewHolder(@NonNull BingHolder bingHolder, int i) {
         Bing currentBing = bings.get(i);
-        bingHolder.textViewStop.setText(String.valueOf(currentBing.getId_stop()));
+        bingHolder.textViewStop.setText(String.valueOf(currentBing.getName_stop()));
+//        bingHolder.textViewStop.setText(String.valueOf(currentBing.getId_stop()));
         bingHolder.textViewTime.setText(String.valueOf(currentBing.getTime()));
         bingHolder.textViewStatus.setText(currentBing.getStatus());
         //Poner los datos correctos
