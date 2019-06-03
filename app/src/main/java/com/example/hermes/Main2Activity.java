@@ -114,11 +114,11 @@ public class Main2Activity extends AppCompatActivity {
 }
 
 //TODO:
-// consumir los datos correctos. NICO - HECHO - REVISAR
+// consumir los datos correctos. NICO - HECHO
 // Agregar botón fecha para retornar a la lista de alarmas. NICO - HECHO
 // cuando creo la alarma que lleve para atras y me la visualice. NICO - HECHO
-// Acomodar la visualizacion de las pantallas. NICO
-// Acomodar las vistas, en manera relativa si vemos que es mejor. o sino ver la mejor manera de renderizar los xml. NICO
+// Acomodar la visualizacion de las pantallas. NICO - FALTA
+// Acomodar las vistas, en manera relativa si vemos que es mejor. o sino ver la mejor manera de renderizar los xml. NICO - HECHO
 // Agregar identificador de usuario. HARDCODE
 // ver la mejor manera de ser notificado por la aplicacion cuando la alarma se encuentra a emitir. LUIS
 

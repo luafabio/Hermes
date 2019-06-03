@@ -58,5 +58,5 @@ public class Bing {
         this.status = status;
     }
 
-//    public void setName_stop(String name_stop) { this.name_stop = name_stop; }
+    public void setName_stop(String name_stop) { this.name_stop = name_stop; }
 }

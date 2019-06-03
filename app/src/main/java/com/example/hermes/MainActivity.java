@@ -1,8 +1,11 @@
 package com.example.hermes;
 
+import android.app.ActionBar;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -29,10 +32,13 @@ public class MainActivity extends AppCompatActivity {
         //setSupportActionBar(mToolbar);
         //getSupportActionBar().setTitle("Hola");
         //getSupportActionBar().setLogo();
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+//        ActionBar bar = getActionBar();
+//        bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3F51B5")));
+//        bar.setDisplayHomeAsUpEnabled(true);
+
+//        Toolbar toolbar = findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
 
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
