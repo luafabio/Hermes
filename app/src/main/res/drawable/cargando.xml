@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/loadinghermes1" android:duration="70"/>
+    <item android:drawable="@drawable/loadinghermes2" android:duration="70"/>
+    <item android:drawable="@drawable/loadinghermes3" android:duration="70"/>
+    <item android:drawable="@drawable/loadinghermes4" android:duration="70"/>
+    <item android:drawable="@drawable/loadinghermes5" android:duration="70"/>
+    <item android:drawable="@drawable/loadinghermes4" android:duration="70"/>
+    <item android:drawable="@drawable/loadinghermes3" android:duration="70"/>
+    <item android:drawable="@drawable/loadinghermes2" android:duration="70"/>
+    <item android:drawable="@drawable/loadinghermes1" android:duration="70"/>
+</animation-list>
