@@ -15,24 +15,25 @@
         tools:ignore="GoogleAppIndexingWarning">
 
         <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name">
-        </activity>
-        <activity
-            android:name=".Main2Activity"
-            android:parentActivityName=".MainActivity"
-            tools:ignore="ExtraText"
-            android:label="Crear Alarma">
-        </activity>
-        <activity
             android:name=".Main3Activity"
-            android:label="Hermes">
+            android:label="Hermes"
+            android:parentActivityName=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".MainActivity"
+            android:label="Hermes - Lista de Alarmas">
+        </activity>
+        <activity
+            android:name=".Main2Activity"
+            tools:ignore="ExtraText"
+            android:label="Hermes - Crear una Alarma">
+            android:parentActivityName=".MainActivity"
+        </activity>
+
     </application>
 
 </manifest>

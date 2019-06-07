@@ -1,43 +1,86 @@
 package com.example.hermes;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.drawable.AnimationDrawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 public class Main3Activity extends AppCompatActivity {
 
-    AnimationDrawable animacion;
+    Button botonIniciar;
+//    TextView textoInicial;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
 
-        ImageView cargando = (ImageView)findViewById(R.id.imageView);
-        animacion = (AnimationDrawable)cargando.getDrawable();
+        @SuppressLint("StaticFieldLeak")
+        AsyncTask<String, String, String> carga = new AsyncTask<String, String, String>() {
+            @Override
+            protected String doInBackground(String... params) {
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                return "done";
+            }
 
-        animacion.start();
+            @Override
+            protected void onPostExecute(String s){
+                if (s.equals("done")){
+                    startActivity(new Intent(Main3Activity.this, MainActivity.class));
+                }
+            }
+        };
 
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        botonIniciar.startAnimation();
+        carga.execute();
 
-        animacion.stop();
+//        botonIniciar = findViewById(R.id.empecemos);
+//        botonIniciar.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                @SuppressLint("StaticFieldLeak")
+//                AsyncTask<String, String, String> carga = new AsyncTask<String, String, String>() {
+//                    @Override
+//                    protected String doInBackground(String... params) {
+//                        try {
+//                            Thread.sleep(3000);
+//                        } catch (InterruptedException e) {
+//                            e.printStackTrace();
+//                        }
+//                        return "done";
+//                    }
+//
+//                    @Override
+//                    protected void onPostExecute(String s){
+//                        if (s.equals("done")){
+//                            startActivity(new Intent(Main3Activity.this, MainActivity.class));
+//                        }
+//                    }
+//                };
+//
+//                botonIniciar.startAnimation();
+//                carga.execute();
+//
+//                startActivity(new Intent(Main3Activity.this, MainActivity.class));
+//
+//            }
+//        });
 
-        startActivity(new Intent(Main3Activity.this, MainActivity.class));
+
+
     }
 
+    @Override
     protected void onResume() {
         super.onResume();
-        startActivity(new Intent(Main3Activity.this, MainActivity.class));
     }
 
 }

@@ -28,17 +28,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(mToolbar);
-        //getSupportActionBar().setTitle("Hola");
-        //getSupportActionBar().setLogo();
-
-//        ActionBar bar = getActionBar();
-//        bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3F51B5")));
-//        bar.setDisplayHomeAsUpEnabled(true);
-
-//        Toolbar toolbar = findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
 
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

@@ -10,6 +10,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 
+import java.util.Iterator;
 import java.util.List;
 
 import retrofit2.Call;
@@ -73,6 +74,18 @@ public class Main2Activity extends AppCompatActivity {
             public void onResponse(Call<List<Stop>> call, Response<List<Stop>> response) {
                 stops = response.body();
 
+                Iterator<Stop> it = stops.iterator();
+
+                int i = 0;
+                while(it.hasNext()){
+                    Stop item=it.next();
+//                    System.out.println(item.toString());
+                    System.out.println("ID: " + item.getIdString() + " || " + "NOMBRE: " + item.getName());
+                    item.setId(i);
+                    System.out.println("ID: " + item.getIdString() + " || " + "NOMBRE: " + item.getName());
+                    i++;
+                }
+
                 ArrayAdapter<Stop> adapter = new ArrayAdapter<>(Main2Activity.this, android.R.layout.simple_spinner_item, stops);
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
@@ -92,13 +105,14 @@ public class Main2Activity extends AppCompatActivity {
     }
 
     public void postStop(View v) {
+        Toast.makeText(Main2Activity.this, getSelectedStop().getIdString(), Toast.LENGTH_SHORT).show();
         Bing bing = new Bing(324, getSelectedStop().getId(), time);
 
         Call<Void> call = restBing.createBing(bing);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                Toast.makeText(Main2Activity.this, "Alarma creada de manera exitosa", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(Main2Activity.this, "Alarma creada de manera exitosa", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(Main2Activity.this, MainActivity.class));
             }
 
