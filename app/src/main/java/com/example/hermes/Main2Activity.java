@@ -5,12 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.NumberPicker;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 
-import java.util.Iterator;
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -26,10 +25,9 @@ public class Main2Activity extends AppCompatActivity {
     private RestBing restBing;
 
     private Spinner spinner;
+    private Spinner timeSpinner;
 
     private List<Stop> stops;
-    private int time;
-
 
 
     @Override
@@ -38,22 +36,6 @@ public class Main2Activity extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
 
 
-
-        NumberPicker np = (NumberPicker) findViewById(R.id.np);
-
-        np.setMinValue(5);
-        np.setMaxValue(25);
-        np.setWrapSelectorWheel(true);
-
-        time = 5;
-
-        np.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
-            @Override
-            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-                time = newVal;
-            }
-        });
-
         retrofit = new Retrofit.Builder()
                 .baseUrl("http://ec2-18-219-95-88.us-east-2.compute.amazonaws.com:3000/")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -61,6 +43,19 @@ public class Main2Activity extends AppCompatActivity {
 
         restStop = retrofit.create(RestStop.class);
         restBing = retrofit.create(RestBing.class);
+
+
+        timeSpinner = (Spinner) findViewById(R.id.time_spinner);
+        final List<Integer> timeList = new ArrayList<>();
+        timeList.add(5);
+        timeList.add(10);
+        timeList.add(15);
+        timeList.add(20);
+        timeList.add(25);
+
+
+        ArrayAdapter<Integer> timeAdapter = new ArrayAdapter<>(Main2Activity.this, R.layout.support_simple_spinner_dropdown_item, timeList);
+        timeSpinner.setAdapter(timeAdapter);
 
         spinner = (Spinner) findViewById(R.id.stop_spinner);
 
@@ -73,18 +68,6 @@ public class Main2Activity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<Stop>> call, Response<List<Stop>> response) {
                 stops = response.body();
-
-                Iterator<Stop> it = stops.iterator();
-
-                int i = 0;
-                while(it.hasNext()){
-                    Stop item=it.next();
-//                    System.out.println(item.toString());
-                    System.out.println("ID: " + item.getIdString() + " || " + "NOMBRE: " + item.getName());
-                    item.setId(i);
-                    System.out.println("ID: " + item.getIdString() + " || " + "NOMBRE: " + item.getName());
-                    i++;
-                }
 
                 ArrayAdapter<Stop> adapter = new ArrayAdapter<>(Main2Activity.this, android.R.layout.simple_spinner_item, stops);
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -100,19 +83,24 @@ public class Main2Activity extends AppCompatActivity {
     }
 
     public Stop getSelectedStop() {
-
         return (Stop) spinner.getSelectedItem();
     }
 
+    public int getSelectedTime() {
+        return (int) timeSpinner.getSelectedItem();
+    }
+
     public void postStop(View v) {
-        Toast.makeText(Main2Activity.this, getSelectedStop().getIdString(), Toast.LENGTH_SHORT).show();
-        Bing bing = new Bing(324, getSelectedStop().getId(), time);
+
+
+        Bing bing = new Bing(324, getSelectedStop().getNum_stop(), getSelectedTime());
 
         Call<Void> call = restBing.createBing(bing);
+
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-//                Toast.makeText(Main2Activity.this, "Alarma creada de manera exitosa", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Main2Activity.this, "Alarma creada de manera exitosa", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(Main2Activity.this, MainActivity.class));
             }
 

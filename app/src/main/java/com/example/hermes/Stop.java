@@ -6,19 +6,19 @@ public class Stop {
     private int eta_stop;
     private int long_stop;
     private boolean status;
-    private int id;
+    private int num_stop;
     private String name;
 
     public Stop() {
     }
 
-    public Stop(float lat, float lng, int eta_stop, int long_stop, boolean status, int id, String name) {
+    public Stop(float lat, float lng, int eta_stop, int long_stop, boolean status, int num_stop, String name) {
         this.lat = lat;
         this.lng = lng;
         this.eta_stop = eta_stop;
         this.long_stop = long_stop;
         this.status = status;
-        this.id = id;
+        this.num_stop = num_stop;
         this.name = name;
     }
 
@@ -42,16 +42,12 @@ public class Stop {
         return status;
     }
 
-    public int getId() {
-        return id;
+    public int getNum_stop() {
+        return num_stop;
     }
 
-    public int setId(int id) {
-        return this.id = id;
-    }
-
-    public String getIdString() {
-        return String.valueOf(id);
+    public void setNum_stop(int num_stop) {
+        this.num_stop = num_stop;
     }
 
     public String getName() {
