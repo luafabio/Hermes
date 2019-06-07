@@ -30,8 +30,8 @@
         <activity
             android:name=".Main2Activity"
             tools:ignore="ExtraText"
-            android:label="Hermes - Crear una Alarma">
-            android:parentActivityName=".MainActivity"
+            android:label="Hermes - Crear una Alarma"
+            android:parentActivityName=".MainActivity">
         </activity>
 
     </application>
