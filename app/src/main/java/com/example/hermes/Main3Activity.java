@@ -35,46 +35,13 @@ public class Main3Activity extends AppCompatActivity {
             protected void onPostExecute(String s){
                 if (s.equals("done")){
                     startActivity(new Intent(Main3Activity.this, MainActivity.class));
+                    finish();
                 }
             }
         };
 
 //        botonIniciar.startAnimation();
         carga.execute();
-
-//        botonIniciar = findViewById(R.id.empecemos);
-//        botonIniciar.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                @SuppressLint("StaticFieldLeak")
-//                AsyncTask<String, String, String> carga = new AsyncTask<String, String, String>() {
-//                    @Override
-//                    protected String doInBackground(String... params) {
-//                        try {
-//                            Thread.sleep(3000);
-//                        } catch (InterruptedException e) {
-//                            e.printStackTrace();
-//                        }
-//                        return "done";
-//                    }
-//
-//                    @Override
-//                    protected void onPostExecute(String s){
-//                        if (s.equals("done")){
-//                            startActivity(new Intent(Main3Activity.this, MainActivity.class));
-//                        }
-//                    }
-//                };
-//
-//                botonIniciar.startAnimation();
-//                carga.execute();
-//
-//                startActivity(new Intent(Main3Activity.this, MainActivity.class));
-//
-//            }
-//        });
-
-
 
     }
 

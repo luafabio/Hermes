@@ -1,13 +1,21 @@
 package com.example.hermes;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +25,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+
+import static android.support.constraint.Constraints.TAG;
 
 public class Main2Activity extends AppCompatActivity {
 
@@ -29,6 +39,7 @@ public class Main2Activity extends AppCompatActivity {
 
     private List<Stop> stops;
 
+    private static final String TAG = "Main2Activity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +72,28 @@ public class Main2Activity extends AppCompatActivity {
 
         getAllStop();
 
+        Button boton = (Button) findViewById(R.id.logTokenButton);
+        boton.setOnClickListener(new View.OnClickListener() {
+                                     public void onClick(View v) {
+                                         FirebaseInstanceId.getInstance().getInstanceId()
+                                                 .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                                                     @Override
+                                                     public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                                                         if (!task.isSuccessful()) {
+                                                             Log.w(TAG, "getInstanceId failed", task.getException());
+                                                             return;
+                                                         }
+
+                                                         // Get new Instance ID token
+                                                         String token = task.getResult().getToken();
+
+                                                         // Log and toast
+                                                         //                        String msg = getString(R.string.msg_token_fmt, token);
+                                                         Log.d(TAG, token);
+                                                     }
+                                                 });
+                                     }
+            });
     }
 
     public void getAllStop() {

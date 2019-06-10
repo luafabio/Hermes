@@ -4,6 +4,7 @@
     package="com.example.hermes">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:allowBackup="true"
@@ -15,27 +16,32 @@
         tools:ignore="GoogleAppIndexingWarning">
 
         <activity
-            android:name=".Main3Activity"
+            android:name="com.example.hermes.Main3Activity"
             android:label="Hermes"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName="com.example.hermes.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
-            android:label="Hermes - Lista de Alarmas">
+            android:name="com.example.hermes.MainActivity"
+            android:label="Alarmas Recientes">
         </activity>
         <activity
-            android:name=".Main2Activity"
-            tools:ignore="ExtraText"
-            android:label="Hermes - Crear una Alarma"
-            android:parentActivityName=".MainActivity">
+            android:name="com.example.hermes.Main2Activity"
+            android:label="Crear una Alarma"
+            android:parentActivityName="com.example.hermes.MainActivity"
+            tools:ignore="ExtraText">
         </activity>
 
+        <service android:name="com.example.hermes.FcmMensajes">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>
