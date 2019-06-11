@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".Main3Activity">
 
-
     <include layout="@layout/content_main3" />
 
 </android.support.design.widget.CoordinatorLayout>

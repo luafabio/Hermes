@@ -40,18 +40,4 @@
         app:layout_constraintVertical_bias="0.208"
         app:srcCompat="@drawable/logohermes" />
 
-
-
-    <!--<TextView-->
-        <!--android:id="@+id/textoDePresencion"-->
-        <!--android:layout_width="345dp"-->
-        <!--android:layout_height="196dp"-->
-        <!--android:layout_marginTop="52dp"-->
-        <!--android:layout_marginEnd="32dp"-->
-        <!--android:gravity="center_horizontal"-->
-        <!--android:text="La App diseñada para avisarte cuando está llegando el colectivo mientras-->
-         <!--aprovechas tu tiempo!"-->
-        <!--android:textSize="30sp"-->
-        <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--app:layout_constraintTop_toBottomOf="@+id/imageView" />-->
 </android.support.constraint.ConstraintLayout>

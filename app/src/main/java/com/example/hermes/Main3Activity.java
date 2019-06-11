@@ -11,37 +11,12 @@ import android.widget.ImageView;
 
 public class Main3Activity extends AppCompatActivity {
 
-    Button botonIniciar;
-//    TextView textoInicial;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
 
-        @SuppressLint("StaticFieldLeak")
-        AsyncTask<String, String, String> carga = new AsyncTask<String, String, String>() {
-            @Override
-            protected String doInBackground(String... params) {
-                try {
-                    Thread.sleep(3000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                return "done";
-            }
 
-            @Override
-            protected void onPostExecute(String s){
-                if (s.equals("done")){
-                    startActivity(new Intent(Main3Activity.this, MainActivity.class));
-                    finish();
-                }
-            }
-        };
-
-//        botonIniciar.startAnimation();
-        carga.execute();
 
     }
 

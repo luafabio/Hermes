@@ -15,11 +15,10 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
+
         <activity
-            android:name="com.example.hermes.Main3Activity"
-            android:label="Hermes"
-            android:parentActivityName="com.example.hermes.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:name="com.example.hermes.MainActivity"
+            android:label="Alarmas Recientes">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,14 +26,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.hermes.MainActivity"
-            android:label="Alarmas Recientes">
-        </activity>
-        <activity
             android:name="com.example.hermes.Main2Activity"
             android:label="Crear una Alarma"
             android:parentActivityName="com.example.hermes.MainActivity"
             tools:ignore="ExtraText">
+        </activity>
+        <activity
+            android:name="com.example.hermes.Main3Activity"
+            android:label="Crear una Alarma"
+            android:parentActivityName="com.example.hermes.MainActivity">
         </activity>
 
         <service android:name="com.example.hermes.FcmMensajes">
