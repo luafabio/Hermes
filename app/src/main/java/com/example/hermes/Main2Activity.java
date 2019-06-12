@@ -1,12 +1,14 @@
 package com.example.hermes;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -37,6 +39,11 @@ public class Main2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
+        TextView tx = (TextView)findViewById(R.id.textView3);
+
+        Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/abc.ttf");
+
+        tx.setTypeface(custom_font);
 
         retrofit = new Retrofit.Builder()
                 .baseUrl("http://ec2-18-219-95-88.us-east-2.compute.amazonaws.com:3000/")
