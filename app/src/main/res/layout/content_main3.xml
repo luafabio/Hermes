@@ -35,6 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_marginBottom="28dp"
+        android:onClick="postStop"
         android:text="Crear Alarma"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteX="0dp" />

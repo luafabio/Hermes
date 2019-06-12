@@ -1,24 +1,13 @@
 package com.example.hermes;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.NumberPicker;
 import android.widget.Spinner;
-import android.widget.Toast;
 
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.iid.InstanceIdResult;
-
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -27,7 +16,10 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import static android.support.constraint.Constraints.TAG;
+//import com.google.android.gms.tasks.OnCompleteListener;
+//import com.google.android.gms.tasks.Task;
+//import com.google.firebase.iid.FirebaseInstanceId;
+//import com.google.firebase.iid.InstanceIdResult;
 
 public class Main2Activity extends AppCompatActivity {
 
@@ -70,16 +62,14 @@ public class Main2Activity extends AppCompatActivity {
         getAllStop();
 
         Button boton = (Button) findViewById(R.id.segundoPaso);
-        boton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v){
-                Intent intent = new Intent(Main2Activity.this, Main3Activity.class);
-                intent.putExtra("parada_id", getSelectedStop().getNum_stop());
-                startActivity(intent);
-            }
-        });
 
     }
 
+    public void siguiente(View v){
+        Intent intent = new Intent(Main2Activity.this, Main3Activity.class);
+        intent.putExtra("parada_id", getSelectedStop().getNum_stop());
+        startActivity(intent);
+    }
 
     public void getAllStop() {
         restStop.getStops().enqueue(new Callback<List<Stop>>() {
