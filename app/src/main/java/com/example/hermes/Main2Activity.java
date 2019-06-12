@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.NumberPicker;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -32,14 +33,12 @@ public class Main2Activity extends AppCompatActivity {
 
     private Retrofit retrofit;
     private RestStop restStop;
-    private RestBing restBing;
 
     private Spinner spinner;
     private Spinner timeSpinner;
 
     private List<Stop> stops;
 
-    private static final String TAG = "Main2Activity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,48 +52,34 @@ public class Main2Activity extends AppCompatActivity {
                 .build();
 
         restStop = retrofit.create(RestStop.class);
-        restBing = retrofit.create(RestBing.class);
 
 
-        timeSpinner = (Spinner) findViewById(R.id.time_spinner);
-        final List<Integer> timeList = new ArrayList<>();
-        timeList.add(5);
-        timeList.add(10);
-        timeList.add(15);
-        timeList.add(20);
-        timeList.add(25);
+//        timeSpinner = (Spinner) findViewById(R.id.time_spinner);
+//        final List<Integer> timeList = new ArrayList<>();
+//        timeList.add(5);
+//        timeList.add(10);
+//        timeList.add(15);
+//        timeList.add(20);
+//        timeList.add(25);
+//
+//        ArrayAdapter<Integer> timeAdapter = new ArrayAdapter<>(Main2Activity.this, R.layout.support_simple_spinner_dropdown_item, timeList);
+//        timeSpinner.setAdapter(timeAdapter);
 
-
-        ArrayAdapter<Integer> timeAdapter = new ArrayAdapter<>(Main2Activity.this, R.layout.support_simple_spinner_dropdown_item, timeList);
-        timeSpinner.setAdapter(timeAdapter);
-
-        spinner = (Spinner) findViewById(R.id.stop_spinner);
+//        spinner = (Spinner) findViewById(R.id.stop_spinner);
 
         getAllStop();
 
-        Button boton = (Button) findViewById(R.id.logTokenButton);
+        Button boton = (Button) findViewById(R.id.segundoPaso);
         boton.setOnClickListener(new View.OnClickListener() {
-                                     public void onClick(View v) {
-                                         FirebaseInstanceId.getInstance().getInstanceId()
-                                                 .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
-                                                     @Override
-                                                     public void onComplete(@NonNull Task<InstanceIdResult> task) {
-                                                         if (!task.isSuccessful()) {
-                                                             Log.w(TAG, "getInstanceId failed", task.getException());
-                                                             return;
-                                                         }
+            public void onClick(View v){
+                Intent intent = new Intent(Main2Activity.this, Main3Activity.class);
+                intent.putExtra("parada_id", getSelectedStop().getNum_stop());
+                startActivity(intent);
+            }
+        });
 
-                                                         // Get new Instance ID token
-                                                         String token = task.getResult().getToken();
-
-                                                         // Log and toast
-                                                         //                        String msg = getString(R.string.msg_token_fmt, token);
-                                                         Log.d(TAG, token);
-                                                     }
-                                                 });
-                                     }
-            });
     }
+
 
     public void getAllStop() {
         restStop.getStops().enqueue(new Callback<List<Stop>>() {
@@ -119,41 +104,11 @@ public class Main2Activity extends AppCompatActivity {
         return (Stop) spinner.getSelectedItem();
     }
 
-    public int getSelectedTime() {
-        return (int) timeSpinner.getSelectedItem();
-    }
-
-    public void postStop(View v) {
 
 
-        Bing bing = new Bing(324, getSelectedStop().getNum_stop(), getSelectedTime());
 
-        Call<Void> call = restBing.createBing(bing);
-
-        call.enqueue(new Callback<Void>() {
-            @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
-                Toast.makeText(Main2Activity.this, "Alarma creada de manera exitosa", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(Main2Activity.this, MainActivity.class));
-            }
-
-            @Override
-            public void onFailure(Call<Void> call, Throwable t) {
-                Toast.makeText(Main2Activity.this, "Error al crear la alarma", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(Main2Activity.this, MainActivity.class));
-            }
-        });
-    }
 
 
 }
 
-//TODO:
-// consumir los datos correctos. NICO - HECHO
-// Agregar botón fecha para retornar a la lista de alarmas. NICO - HECHO
-// cuando creo la alarma que lleve para atras y me la visualice. NICO - HECHO
-// Acomodar la visualizacion de las pantallas. NICO - FALTA
-// Acomodar las vistas, en manera relativa si vemos que es mejor. o sino ver la mejor manera de renderizar los xml. NICO - HECHO
-// Agregar identificador de usuario. HARDCODE
-// ver la mejor manera de ser notificado por la aplicacion cuando la alarma se encuentra a emitir. LUIS
 
