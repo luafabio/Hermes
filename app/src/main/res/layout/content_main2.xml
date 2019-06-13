@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/logohermes3"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".Main2Activity"
     tools:showIn="@layout/activity_main2">
@@ -12,12 +11,13 @@
     <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
-        android:layout_height="32dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:fontFamily="@font/proxima_nova_alt_bold"
         android:text="Seleccione la Parada:"
-        android:textSize="24sp"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,14 +26,15 @@
 
     <Spinner
         android:id="@+id/stop_spinner"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
+        android:fontFamily="@font/proxima_nova_alt_bold"
         android:textAlignment="center"
-        android:textSize="20sp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
@@ -41,11 +42,14 @@
     <Button
         android:id="@+id/segundoPaso"
         android:layout_width="match_parent"
-        android:layout_height="61dp"
+        android:layout_height="60dp"
         android:layout_alignParentEnd="true"
-        android:layout_marginBottom="16dp"
+        android:background="#009688"
+        android:fontFamily="@font/proxima_nova_alt_bold"
         android:onClick="siguiente"
         android:text="SIGUIENTE"
+        android:textColor="#ffffff"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteX="0dp" />
 

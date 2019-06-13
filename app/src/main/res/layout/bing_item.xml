@@ -22,9 +22,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="2dp"
             android:layout_marginEnd="10dp"
             android:layout_toStartOf="@+id/textView"
+            android:fontFamily="@font/proxima_nova_regular"
             android:text="1"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
@@ -35,6 +36,7 @@
             android:layout_alignParentStart="true"
             android:layout_toStartOf="@id/text_view_stop"
             android:ellipsize="end"
+            android:fontFamily="@font/proxima_nova_regular"
             android:maxLines="1"
             android:text="Title"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
@@ -54,8 +56,9 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="6dp"
             android:layout_marginEnd="2dp"
+            android:fontFamily="@font/proxima_nova_alt_bold"
             android:text="min"
             android:textSize="18sp" />
 

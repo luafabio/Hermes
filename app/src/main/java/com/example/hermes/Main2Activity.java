@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -39,12 +38,6 @@ public class Main2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        TextView tx = (TextView)findViewById(R.id.textView3);
-
-        Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/abc.ttf");
-
-        tx.setTypeface(custom_font);
-
         retrofit = new Retrofit.Builder()
                 .baseUrl("http://ec2-18-219-95-88.us-east-2.compute.amazonaws.com:3000/")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -52,29 +45,16 @@ public class Main2Activity extends AppCompatActivity {
 
         restStop = retrofit.create(RestStop.class);
 
-
-//        timeSpinner = (Spinner) findViewById(R.id.time_spinner);
-//        final List<Integer> timeList = new ArrayList<>();
-//        timeList.add(5);
-//        timeList.add(10);
-//        timeList.add(15);
-//        timeList.add(20);
-//        timeList.add(25);
-//
-//        ArrayAdapter<Integer> timeAdapter = new ArrayAdapter<>(Main2Activity.this, R.layout.support_simple_spinner_dropdown_item, timeList);
-//        timeSpinner.setAdapter(timeAdapter);
-
-//        spinner = (Spinner) findViewById(R.id.stop_spinner);
+        spinner = (Spinner) findViewById(R.id.stop_spinner);
 
         getAllStop();
-
-        Button boton = (Button) findViewById(R.id.segundoPaso);
 
     }
 
     public void siguiente(View v){
         Intent intent = new Intent(Main2Activity.this, Main3Activity.class);
-        intent.putExtra("parada_id", getSelectedStop().getNum_stop());
+        intent.putExtra("parada_id", this.getSelectedStop().getNum_stop());
+//        intent.putExtra("retrofit_objeto", this.getRetrofit());
         startActivity(intent);
     }
 
@@ -101,10 +81,9 @@ public class Main2Activity extends AppCompatActivity {
         return (Stop) spinner.getSelectedItem();
     }
 
-
-
-
-
+    public Retrofit getRetrofit(){
+        return (Retrofit) this.retrofit;
+    }
 
 }
 

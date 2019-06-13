@@ -4,20 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/logohermes3"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".Main3Activity"
     tools:showIn="@layout/activity_main3">
 
     <TextView
-        android:id="@+id/textView4"
-        android:layout_width="0dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="36dp"
-        android:fontFamily="sans-serif-medium"
+        android:id="@+id/ingrese_tiempo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/proxima_nova_alt_bold"
         android:text="Ingrese el tiempo de aviso:"
-        android:textSize="20sp"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,18 +26,21 @@
         android:id="@+id/np"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
+        android:fontFamily="@font/proxima_nova_alt_bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/ingrese_tiempo" />
 
     <Button
         android:id="@+id/logTokenButton"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginBottom="28dp"
+        android:layout_height="60dp"
+        android:background="#009688"
+        android:fontFamily="@font/proxima_nova_alt_bold"
         android:onClick="postStop"
         android:text="Crear Alarma"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteX="0dp" />
 
