@@ -51,9 +51,9 @@ public class BingAdapter extends RecyclerView.Adapter<BingAdapter.BingHolder> {
         public BingHolder(@NonNull View itemView) {
             super(itemView);
 
-            textViewStop = itemView.findViewById(R.id.text_view_stop);
+            textViewStop = itemView.findViewById(R.id.nombre_parada);
             textViewTime = itemView.findViewById(R.id.text_view_time);
-            textViewStatus = itemView.findViewById(R.id.text_view_status);
+//            textViewStatus = itemView.findViewById(R.id.text_view_status);
             //Poner los datos correctos
 
         }

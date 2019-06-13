@@ -1,13 +1,11 @@
 package com.example.hermes;
 
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import java.util.List;
 
@@ -31,12 +29,29 @@ public class Main2Activity extends AppCompatActivity {
     private Spinner timeSpinner;
 
     private List<Stop> stops;
+    private BingViewModel bingViewModel;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+
+//        RecyclerView recyclerViewParadas = findViewById(R.id.reciclerViewParadas);
+//        recyclerViewParadas.setLayoutManager(new LinearLayoutManager(this));
+//        recyclerViewParadas.setHasFixedSize(true);
+//
+//        final BingAdapter adapter = new BingAdapter();
+//        recyclerViewParadas.setAdapter(adapter);
+//
+//        bingViewModel = ViewModelProviders.of(this).get(BingViewModel.class);
+//        bingViewModel.getAllBings().observe(this, new Observer<List<Stop>>(){
+//            @Override
+//            public void onChanged(@Nullable List<Stop> parada) {
+//                adapter.setBings(parada);
+//                adapter.notifyDataSetChanged();
+//            }
+//        });
 
         retrofit = new Retrofit.Builder()
                 .baseUrl("http://ec2-18-219-95-88.us-east-2.compute.amazonaws.com:3000/")
@@ -53,7 +68,7 @@ public class Main2Activity extends AppCompatActivity {
 
     public void siguiente(View v){
         Intent intent = new Intent(Main2Activity.this, Main3Activity.class);
-        intent.putExtra("parada_id", this.getSelectedStop().getNum_stop());
+//        intent.putExtra("parada_id", this.getSelectedStop().getNum_stop());
 //        intent.putExtra("retrofit_objeto", this.getRetrofit());
         startActivity(intent);
     }
