@@ -30,7 +30,6 @@ public class BingAdapter extends RecyclerView.Adapter<BingAdapter.BingHolder> {
 //        bingHolder.textViewStop.setText(String.valueOf(currentBing.getId_stop()));
         bingHolder.textViewTime.setText(String.valueOf(currentBing.getTime()));
         bingHolder.textViewStatus.setText(currentBing.getStatus());
-        //Poner los datos correctos
     }
 
     @Override
@@ -51,11 +50,9 @@ public class BingAdapter extends RecyclerView.Adapter<BingAdapter.BingHolder> {
         public BingHolder(@NonNull View itemView) {
             super(itemView);
 
-            textViewStop = itemView.findViewById(R.id.nombre_parada);
+            textViewStop = itemView.findViewById(R.id.text_view_stop);
             textViewTime = itemView.findViewById(R.id.text_view_time);
-//            textViewStatus = itemView.findViewById(R.id.text_view_status);
-            //Poner los datos correctos
-
+            textViewStatus = itemView.findViewById(R.id.text_view_status);
         }
     }
 }

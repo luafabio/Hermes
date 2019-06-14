@@ -11,7 +11,7 @@
         android:layout_width="175dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/fab_margin"
-        android:tint="@android:color/black"
+        android:tint="#FFFFFF"
         app:backgroundTint="#009688"
         app:layout_anchor="@+id/include"
         app:layout_anchorGravity="bottom|right"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFF"
+    android:background="#00FFFFFF"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".Main4Activity"
     tools:showIn="@layout/activity_main4">
@@ -16,10 +16,10 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="88dp"
         android:layout_marginEnd="8dp"
+        android:fontFamily="@font/proxima_nova_alt_bold"
         android:gravity="center_horizontal"
         android:text="Bienvenido a Hermes!"
         android:textSize="36sp"
-        android:fontFamily="@font/proxima_nova_alt_bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

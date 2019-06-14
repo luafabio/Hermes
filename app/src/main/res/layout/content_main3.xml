@@ -37,10 +37,11 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="#009688"
-        android:fontFamily="@font/proxima_nova_alt_bold"
+        android:fontFamily="@font/proxima_nova_alt_light"
         android:onClick="postStop"
         android:text="Crear Alarma"
-        android:textSize="24sp"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteX="0dp" />
 

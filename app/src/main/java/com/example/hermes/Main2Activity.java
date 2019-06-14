@@ -1,8 +1,13 @@
 package com.example.hermes;
 
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
@@ -29,7 +34,7 @@ public class Main2Activity extends AppCompatActivity {
     private Spinner timeSpinner;
 
     private List<Stop> stops;
-    private BingViewModel bingViewModel;
+    private StopViewModel stopViewModel;
 
 
     @Override
@@ -37,32 +42,32 @@ public class Main2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-//        RecyclerView recyclerViewParadas = findViewById(R.id.reciclerViewParadas);
-//        recyclerViewParadas.setLayoutManager(new LinearLayoutManager(this));
-//        recyclerViewParadas.setHasFixedSize(true);
+        RecyclerView recyclerViewParadas = findViewById(R.id.recycler_view);
+        recyclerViewParadas.setLayoutManager(new LinearLayoutManager(this));
+        recyclerViewParadas.setHasFixedSize(true);
+
+        final StopAdapter adapter = new StopAdapter();
+        recyclerViewParadas.setAdapter(adapter);
+
+        stopViewModel = ViewModelProviders.of(this).get(StopViewModel.class);
+        stopViewModel.getAllBings().observe(this, new Observer<List<Stop>>(){
+            @Override
+            public void onChanged(@Nullable List<Stop> parada) {
+                adapter.setStops(parada);
+                adapter.notifyDataSetChanged();
+            }
+        });
+
+//        retrofit = new Retrofit.Builder()
+//                .baseUrl("http://ec2-18-219-95-88.us-east-2.compute.amazonaws.com:3000/")
+//                .addConverterFactory(GsonConverterFactory.create())
+//                .build();
 //
-//        final BingAdapter adapter = new BingAdapter();
-//        recyclerViewParadas.setAdapter(adapter);
-//
-//        bingViewModel = ViewModelProviders.of(this).get(BingViewModel.class);
-//        bingViewModel.getAllBings().observe(this, new Observer<List<Stop>>(){
-//            @Override
-//            public void onChanged(@Nullable List<Stop> parada) {
-//                adapter.setBings(parada);
-//                adapter.notifyDataSetChanged();
-//            }
-//        });
+//        restStop = retrofit.create(RestStop.class);
 
-        retrofit = new Retrofit.Builder()
-                .baseUrl("http://ec2-18-219-95-88.us-east-2.compute.amazonaws.com:3000/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+//        spinner = (Spinner) findViewById(R.id.stop_spinner);
 
-        restStop = retrofit.create(RestStop.class);
-
-        spinner = (Spinner) findViewById(R.id.stop_spinner);
-
-        getAllStop();
+//        getAllStop();
 
     }
 
