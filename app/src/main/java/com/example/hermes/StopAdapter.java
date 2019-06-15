@@ -29,8 +29,9 @@ public class StopAdapter extends RecyclerView.Adapter<StopAdapter.StopHolder>{
     @Override
     public void onBindViewHolder(@NonNull StopHolder stopHolder, int i) {
         Stop currentStop = stops.get(i);
-        stopHolder.textViewStop.setText(String.valueOf(currentStop.getName()));
-        stopHolder.textViewStopNumber.setText(String.valueOf(currentStop.getNum_stop()));
+        String auxiliar = String.valueOf(currentStop.getNum_stop()) + " - " +
+                String.valueOf(currentStop.getName());
+        stopHolder.textViewStop.setText(auxiliar);
     }
 
     @Override
@@ -45,13 +46,11 @@ public class StopAdapter extends RecyclerView.Adapter<StopAdapter.StopHolder>{
 
     class StopHolder extends RecyclerView.ViewHolder {
         private TextView textViewStop;
-        private TextView textViewStopNumber;
 
         public StopHolder(@NonNull View itemView) {
             super(itemView);
 
             textViewStop = itemView.findViewById(R.id.nombre_parada);
-            textViewStopNumber = itemView.findViewById(R.id.id_parada);
         }
     }
 }

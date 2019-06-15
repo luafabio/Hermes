@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -12,6 +13,8 @@ import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.hermes.fragments.ParadaSeleccionadaFragment;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.iid.FirebaseInstanceId;
@@ -33,10 +36,17 @@ public class Main3Activity extends AppCompatActivity {
     private NumberPicker np;
     private static final String TAG = "Main3Activity";
 
+    private Fragment paradaFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
+
+        paradaFragment = new ParadaSeleccionadaFragment();
+        ((ParadaSeleccionadaFragment) paradaFragment).setUbicacionSeleccionada(new LatLng(37.38, -5.98));
+        getSupportFragmentManager().beginTransaction().replace(
+                R.id.fragment_container, paradaFragment).commit();
 
         retrofit = new Retrofit.Builder()
                 .baseUrl("http://ec2-18-219-95-88.us-east-2.compute.amazonaws.com:3000/")
@@ -52,9 +62,6 @@ public class Main3Activity extends AppCompatActivity {
         np.setValue(5);
 
         np.setWrapSelectorWheel(true);
-
-//        Bundle datos = this.getIntent().getExtras();
-//        parada_seleccionada = datos.getInt("parada_id");
 
         Button boton = (Button) findViewById(R.id.logTokenButton);
         boton.setOnClickListener(new View.OnClickListener() {
