@@ -8,6 +8,17 @@
     tools:context=".Main2Activity"
     tools:showIn="@layout/activity_main2">
 
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="414dp"
+        android:layout_height="664dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/segundoPaso"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/parada_item" />
+
     <Button
         android:id="@+id/segundoPaso"
         android:layout_width="match_parent"
@@ -21,30 +32,6 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteX="0dp" />
-
-    <!--<android.support.v7.widget.RecyclerView-->
-        <!--android:id="@+id/reciclerViewParadas"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="541dp"-->
-        <!--android:layout_marginStart="8dp"-->
-        <!--android:layout_marginTop="8dp"-->
-        <!--android:layout_marginEnd="8dp"-->
-        <!--android:layout_marginBottom="8dp"-->
-        <!--app:layout_constraintBottom_toTopOf="@+id/segundoPaso"-->
-        <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--app:layout_constraintHorizontal_bias="0.0"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toTopOf="@+id/stop_spinner"-->
-        <!--tools:listitem="@layout/parada_item" />-->
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view"
-        android:layout_width="414dp"
-        android:layout_height="671dp"
-        app:layout_constraintBottom_toTopOf="@+id/segundoPaso"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/parada_item" />
 
 
 </android.support.constraint.ConstraintLayout>

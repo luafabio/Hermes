@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import com.example.hermes.Stop;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +30,7 @@ public class StopAdapter extends RecyclerView.Adapter<StopAdapter.StopHolder>{
     public void onBindViewHolder(@NonNull StopHolder stopHolder, int i) {
         Stop currentStop = stops.get(i);
         stopHolder.textViewStop.setText(String.valueOf(currentStop.getName()));
+        stopHolder.textViewStopNumber.setText(String.valueOf(currentStop.getNum_stop()));
     }
 
     @Override
@@ -42,11 +45,13 @@ public class StopAdapter extends RecyclerView.Adapter<StopAdapter.StopHolder>{
 
     class StopHolder extends RecyclerView.ViewHolder {
         private TextView textViewStop;
+        private TextView textViewStopNumber;
 
         public StopHolder(@NonNull View itemView) {
             super(itemView);
 
             textViewStop = itemView.findViewById(R.id.nombre_parada);
+            textViewStopNumber = itemView.findViewById(R.id.id_parada);
         }
     }
 }
