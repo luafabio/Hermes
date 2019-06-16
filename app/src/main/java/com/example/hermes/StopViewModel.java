@@ -9,7 +9,7 @@ public class StopViewModel extends ViewModel {
 
     private StopRepository repository= new StopRepository();
 
-    public LiveData<List<Stop>> getAllBings() {
+    public LiveData<List<Stop>> getAllStops() {
         return repository.getAllStops();
     }
 }

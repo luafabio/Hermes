@@ -56,6 +56,6 @@ public class Stop {
 
     @Override
     public String toString() {
-        return getName();
+        return getNum_stop() + " - " + getName();
     }
 }

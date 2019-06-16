@@ -31,20 +31,27 @@ public class Main3Activity extends AppCompatActivity {
     private Retrofit retrofit;
     private RestBing restBing;
 
-    private int parada_seleccionada;
-
     private NumberPicker np;
     private static final String TAG = "Main3Activity";
 
     private Fragment paradaFragment;
+
+    private int parada_seleccionada;
+    private int paradaId;
+    private double paradaLat = -34.603722;
+    private double paradaLong = -58.381592;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
 
+//        paradaId = Integer.parseInt(getIntent().getStringExtra("parada_id"));
+//        paradaLat = Float.parseFloat(getIntent().getStringExtra("parada_latitud"));
+//        paradaLong = Float.parseFloat(getIntent().getStringExtra("parada_longitud"));
+
         paradaFragment = new ParadaSeleccionadaFragment();
-        ((ParadaSeleccionadaFragment) paradaFragment).setUbicacionSeleccionada(new LatLng(37.38, -5.98));
+        ((ParadaSeleccionadaFragment) paradaFragment).setUbicacionSeleccionada(new LatLng(paradaLat, paradaLong));
         getSupportFragmentManager().beginTransaction().replace(
                 R.id.fragment_container, paradaFragment).commit();
 
@@ -79,7 +86,6 @@ public class Main3Activity extends AppCompatActivity {
                                 String token = task.getResult().getToken();
 
                                 // Log and toast
-                                // String msg = getString(R.string.msg_token_fmt, token);
                                 Log.d(TAG, token);
                             }
                         });

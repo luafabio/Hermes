@@ -28,18 +28,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 //import com.google.firebase.iid.FirebaseInstanceId;
 //import com.google.firebase.iid.InstanceIdResult;
 
-public class Main2Activity extends AppCompatActivity {
-
-    private Retrofit retrofit;
-    private RestStop restStop;
-
-    private Spinner spinner;
-    private Spinner timeSpinner;
+public class Main2Activity extends AppCompatActivity implements StopAdapter.OnParadaListener {
 
     private List<Stop> stops;
     private StopViewModel stopViewModel;
 
-//    private Fragment currentFragment;
+    private StopAdapter adapter;
 
 
     @Override
@@ -47,34 +41,22 @@ public class Main2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-//        currentFragment = new ParadaSeleccionadaFragment();
-
         RecyclerView recyclerViewParadas = findViewById(R.id.recycler_view);
         recyclerViewParadas.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewParadas.setHasFixedSize(true);
 
-        final StopAdapter adapter = new StopAdapter();
+        adapter = new StopAdapter(this);
         recyclerViewParadas.setAdapter(adapter);
 
         stopViewModel = ViewModelProviders.of(this).get(StopViewModel.class);
-        stopViewModel.getAllBings().observe(this, new Observer<List<Stop>>(){
+        stopViewModel.getAllStops().observe(this, new Observer<List<Stop>>(){
             @Override
-            public void onChanged(@Nullable List<Stop> parada) {
-                adapter.setStops(parada);
+            public void onChanged(@Nullable List<Stop> paradas) {
+                Main2Activity.this.stops = paradas;
+                adapter.setStops(paradas);
                 adapter.notifyDataSetChanged();
             }
         });
-
-//        retrofit = new Retrofit.Builder()
-//                .baseUrl("http://ec2-18-219-95-88.us-east-2.compute.amazonaws.com:3000/")
-//                .addConverterFactory(GsonConverterFactory.create())
-//                .build();
-//
-//        restStop = retrofit.create(RestStop.class);
-
-//        spinner = (Spinner) findViewById(R.id.stop_spinner);
-
-//        getAllStop();
 
     }
 
@@ -85,33 +67,17 @@ public class Main2Activity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void getAllStop() {
-        restStop.getStops().enqueue(new Callback<List<Stop>>() {
-            @Override
-            public void onResponse(Call<List<Stop>> call, Response<List<Stop>> response) {
-                stops = response.body();
-
-                ArrayAdapter<Stop> adapter = new ArrayAdapter<>(Main2Activity.this, android.R.layout.simple_spinner_item, stops);
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-                spinner.setAdapter(adapter);
-            }
-
-            @Override
-            public void onFailure(Call<List<Stop>> call, Throwable t) {
-                System.out.println("Error");
-            }
-        });
+    @Override
+    public void onParadaClick(int position) {
+        Intent intent = new Intent(this, Main3Activity.class);
+//        intent.putExtra("parada_id", stops.get(position).getNum_stop());
+//        intent.putExtra("parada_latitud", stops.get(position).getLat());
+//        intent.putExtra("parada_longitud", stops.get(position).getLng());
+        System.out.println("ID - " + stops.get(position).getNum_stop());
+        System.out.println("LAT - " + stops.get(position).getLat());
+        System.out.println("LONG - " + stops.get(position).getLng());
+        startActivity(intent);
     }
-
-    public Stop getSelectedStop() {
-        return (Stop) spinner.getSelectedItem();
-    }
-
-    public Retrofit getRetrofit(){
-        return (Retrofit) this.retrofit;
-    }
-
 }
 
 
