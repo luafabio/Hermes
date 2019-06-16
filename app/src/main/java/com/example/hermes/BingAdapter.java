@@ -1,10 +1,12 @@
 package com.example.hermes;
 
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -27,9 +29,13 @@ public class BingAdapter extends RecyclerView.Adapter<BingAdapter.BingHolder> {
     public void onBindViewHolder(@NonNull BingHolder bingHolder, int i) {
         Bing currentBing = bings.get(i);
         bingHolder.textViewStop.setText(String.valueOf(currentBing.getName_stop()));
-//        bingHolder.textViewStop.setText(String.valueOf(currentBing.getId_stop()));
         bingHolder.textViewTime.setText(String.valueOf(currentBing.getTime()));
+        System.out.println(currentBing.getStatus());
 //        bingHolder.textViewStatus.setText(currentBing.getStatus());
+        if (currentBing.getStatus().equals("finalizada")){
+//            bingHolder.alarmaItem.setBackground(ContextCompat.getDrawable(MainActivity, R.drawable.layout_border));
+            System.out.println("aca");
+        }
     }
 
     @Override
@@ -43,6 +49,7 @@ public class BingAdapter extends RecyclerView.Adapter<BingAdapter.BingHolder> {
     }
 
     class BingHolder extends RecyclerView.ViewHolder {
+        private RelativeLayout alarmaItem;
         private TextView textViewStop;
         private TextView textViewTime;
         private TextView textViewStatus;
@@ -50,6 +57,7 @@ public class BingAdapter extends RecyclerView.Adapter<BingAdapter.BingHolder> {
         public BingHolder(@NonNull View itemView) {
             super(itemView);
 
+            alarmaItem = itemView.findViewById(R.id.alarma_item);
             textViewStop = itemView.findViewById(R.id.text_view_stop);
             textViewTime = itemView.findViewById(R.id.text_view_time);
 //            textViewStatus = itemView.findViewById(R.id.text_view_status);

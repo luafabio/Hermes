@@ -36,7 +36,6 @@ public class Main3Activity extends AppCompatActivity {
 
     private Fragment paradaFragment;
 
-    private int parada_seleccionada;
     private int paradaId;
     private double paradaLat = -34.603722;
     private double paradaLong = -58.381592;
@@ -46,7 +45,7 @@ public class Main3Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
 
-//        paradaId = Integer.parseInt(getIntent().getStringExtra("parada_id"));
+        String paradaId1 = getIntent().getStringExtra("parada_id");
 //        paradaLat = Float.parseFloat(getIntent().getStringExtra("parada_latitud"));
 //        paradaLong = Float.parseFloat(getIntent().getStringExtra("parada_longitud"));
 
@@ -105,7 +104,7 @@ public class Main3Activity extends AppCompatActivity {
 
     public void postStop(View v) {
 
-        Bing bing = new Bing(324, parada_seleccionada, getSelectedTime());
+        Bing bing = new Bing(324, paradaId, getSelectedTime());
 
         Call<Void> call = restBing.createBing(bing);
 
