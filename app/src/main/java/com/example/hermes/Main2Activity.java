@@ -70,12 +70,14 @@ public class Main2Activity extends AppCompatActivity implements StopAdapter.OnPa
     @Override
     public void onParadaClick(int position) {
         Intent intent = new Intent(this, Main3Activity.class);
-        intent.putExtra("parada_id", stops.get(position).getNum_stop());
-//        intent.putExtra("parada_latitud", stops.get(position).getLat());
-//        intent.putExtra("parada_longitud", stops.get(position).getLng());
-        System.out.println("ID - " + stops.get(position).getNum_stop());
-        System.out.println("LAT - " + stops.get(position).getLat());
-        System.out.println("LONG - " + stops.get(position).getLng());
+        Bundle bundle = new Bundle();
+        bundle.putInt("parada_id", stops.get(position).getNum_stop());
+        bundle.putDouble("parada_latitud", stops.get(position).getLat());
+        bundle.putDouble("parada_longitud", stops.get(position).getLng());
+        intent.putExtras(bundle);
+//        System.out.println("ID - " + stops.get(position).getNum_stop());
+//        System.out.println("LAT - " + stops.get(position).getLat());
+//        System.out.println("LONG - " + stops.get(position).getLng());
         startActivity(intent);
     }
 }

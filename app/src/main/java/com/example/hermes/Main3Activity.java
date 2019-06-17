@@ -45,9 +45,14 @@ public class Main3Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
 
-        String paradaId1 = getIntent().getStringExtra("parada_id");
-//        paradaLat = Float.parseFloat(getIntent().getStringExtra("parada_latitud"));
-//        paradaLong = Float.parseFloat(getIntent().getStringExtra("parada_longitud"));
+        Bundle bundle = getIntent().getExtras();
+        paradaId = bundle.getInt("parada_id");
+        paradaLat = bundle.getDouble("parada_latitud");
+        paradaLong = bundle.getDouble("parada_longitud");
+
+        System.out.println(getIntent().getStringExtra("parada_id") + " - "
+                + getIntent().getStringExtra("parada_latitud") + " - "
+                + getIntent().getStringExtra("parada_longitud"));
 
         paradaFragment = new ParadaSeleccionadaFragment();
         ((ParadaSeleccionadaFragment) paradaFragment).setUbicacionSeleccionada(new LatLng(paradaLat, paradaLong));

@@ -36,6 +36,7 @@ public class StopAdapter extends RecyclerView.Adapter<StopAdapter.StopHolder>{
         Stop currentStop = stops.get(i);
         stopHolder.textViewStop.setText(currentStop.toString());
         stopHolder.setParada(currentStop);
+        System.out.println(currentStop.getName() + " - " + currentStop.getLat() + " - " + currentStop.getLng());
     }
 
     @Override

@@ -1,8 +1,11 @@
 package com.example.hermes;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Stop {
-    private float lat;
-    private float lng;
+    private double lat;
+    @SerializedName("long")
+    private double lng;
     private int eta_stop;
     private int long_stop;
     private boolean status;
@@ -12,7 +15,7 @@ public class Stop {
     public Stop() {
     }
 
-    public Stop(float lat, float lng, int eta_stop, int long_stop, boolean status, int num_stop, String name) {
+    public Stop(double lat, double lng, int eta_stop, int long_stop, boolean status, int num_stop, String name) {
         this.lat = lat;
         this.lng = lng;
         this.eta_stop = eta_stop;
@@ -22,11 +25,11 @@ public class Stop {
         this.name = name;
     }
 
-    public float getLat() {
+    public double getLat() {
         return lat;
     }
 
-    public float getLng() {
+    public double getLng() {
         return lng;
     }
 

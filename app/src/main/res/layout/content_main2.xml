@@ -14,21 +14,8 @@
         android:layout_height="match_parent"
         tools:layout_editor_absoluteX="-16dp"
         tools:layout_editor_absoluteY="8dp"
-        tools:listitem="@layout/parada_item" />
-
-    <!--<Button-->
-        <!--android:id="@+id/segundoPaso"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="60dp"-->
-        <!--android:layout_alignParentEnd="true"-->
-        <!--android:background="#009688"-->
-        <!--android:fontFamily="@font/proxima_nova_alt_light"-->
-        <!--android:onClick="siguiente"-->
-        <!--android:text="SIGUIENTE"-->
-        <!--android:textColor="#ffffff"-->
-        <!--android:textSize="20sp"-->
-        <!--app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--app:layout_constraintStart_toStartOf="parent" />-->
-
+        tools:listitem="@layout/parada_item"/>
+        <!--<padding android:left="10dp" android:top="10dp"-->
+        <!--android:right="10dp" android:bottom="10dp" />-->
 
 </android.support.constraint.ConstraintLayout>
