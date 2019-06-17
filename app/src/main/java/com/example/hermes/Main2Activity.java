@@ -74,6 +74,7 @@ public class Main2Activity extends AppCompatActivity implements StopAdapter.OnPa
         bundle.putInt("parada_id", stops.get(position).getNum_stop());
         bundle.putDouble("parada_latitud", stops.get(position).getLat());
         bundle.putDouble("parada_longitud", stops.get(position).getLng());
+        bundle.putString("parada_nombre", stops.get(position).getName());
         intent.putExtras(bundle);
 //        System.out.println("ID - " + stops.get(position).getNum_stop());
 //        System.out.println("LAT - " + stops.get(position).getLat());

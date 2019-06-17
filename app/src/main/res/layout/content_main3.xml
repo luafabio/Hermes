@@ -9,21 +9,6 @@
     tools:showIn="@layout/activity_main3">
 
     <TextView
-        android:id="@+id/ingrese_tiempo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:fontFamily="@font/proxima_nova_alt_bold"
-        android:text="Ingrese el tiempo de aviso:"
-        android:textSize="22sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_container" />
-
-    <TextView
         android:id="@+id/parada_seleccionadaView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -37,15 +22,49 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/ingrese_tiempo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/proxima_nova_alt_bold"
+        android:text="Ingrese el tiempo de aviso:"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_container" />
+
+    <TextView
+        android:id="@+id/parada_seleccionadaNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/proxima_nova_alt_bold"
+        android:gravity="center"
+        android:text="Nombre Parada"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/parada_seleccionadaView" />
+
     <NumberPicker
         android:id="@+id/np"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="172dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="52dp"
         android:fontFamily="@font/proxima_nova_alt_bold"
+        app:layout_constraintBottom_toTopOf="@+id/logTokenButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ingrese_tiempo" />
+        app:layout_constraintTop_toBottomOf="@+id/ingrese_tiempo"
+        app:layout_constraintVertical_bias="0.625" />
 
     <Button
         android:id="@+id/logTokenButton"
@@ -65,12 +84,12 @@
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/layout_border"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/parada_seleccionadaView"/>
+        app:layout_constraintTop_toBottomOf="@+id/parada_seleccionadaNombre" />
 
 </android.support.constraint.ConstraintLayout>

@@ -58,9 +58,9 @@ public class ParadaSeleccionadaFragment extends Fragment implements OnMapReadyCa
 
         CameraPosition camara = new CameraPosition.Builder()
                 .target(ubicacionSeleccionada)
-                .zoom(17)
+                .zoom(18)
                 .bearing(0)
-                .tilt(30)
+                .tilt(45)
                 .build();
 
         gmap.animateCamera(CameraUpdateFactory.newCameraPosition(camara));

@@ -2,71 +2,76 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginStart="8dp"
     android:layout_marginTop="8dp"
     android:layout_marginEnd="8dp">
 
-    <RelativeLayout
-        android:id="@+id/alarma_item"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:splitMotionEvents="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/colorPrimary">
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/cardview1"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        card_view:cardBackgroundColor="@color/colorPrimary"
+        card_view:contentPaddingBottom="16dp"
+        card_view:contentPaddingTop="16dp"
+        card_view:cardCornerRadius="14dp">
 
-        <TextView
-            android:id="@+id/text_view_time"
+        <RelativeLayout
+            android:id="@+id/alarma_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="2dp"
-            android:layout_marginEnd="5dp"
-            android:layout_toStartOf="@+id/textView"
-            android:fontFamily="@font/proxima_nova_regular"
-            android:text="1"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+            android:padding="8dp"
+            android:splitMotionEvents="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/text_view_stop"
-            android:layout_width="318dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_marginEnd="8dp"
-            android:layout_toStartOf="@+id/text_view_time"
-            android:ellipsize="end"
-            android:fontFamily="@font/proxima_nova_regular"
-            android:maxLines="1"
-            android:text="Title"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+            <TextView
+                android:id="@+id/text_view_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="5dp"
+                android:layout_toStartOf="@+id/textView"
+                android:fontFamily="@font/proxima_nova_regular"
+                android:text="1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
-        <!--<TextView-->
-        <!--android:id="@+id/text_view_status"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_below="@+id/text_view_stop"-->
-        <!--android:layout_alignParentStart="true"-->
-        <!--android:layout_marginStart="8dp"-->
-        <!--android:text="Description" />-->
+            <TextView
+                android:id="@+id/text_view_stop"
+                android:layout_width="318dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginEnd="8dp"
+                android:layout_toStartOf="@+id/text_view_time"
+                android:ellipsize="end"
+                android:fontFamily="@font/proxima_nova_regular"
+                android:maxLines="1"
+                android:text="Title"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="6dp"
-            android:layout_marginEnd="2dp"
-            android:fontFamily="@font/proxima_nova_alt_bold"
-            android:text="min"
-            android:textSize="18sp" />
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="2dp"
+                android:fontFamily="@font/proxima_nova_alt_bold"
+                android:text="min"
+                android:textSize="18sp" />
 
+        </RelativeLayout>
 
-    </RelativeLayout>
+    </android.support.v7.widget.CardView>
 
 </android.support.constraint.ConstraintLayout>

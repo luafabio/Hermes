@@ -37,6 +37,7 @@ public class Main3Activity extends AppCompatActivity {
     private Fragment paradaFragment;
 
     private int paradaId;
+    private String paradaNombre;
     private double paradaLat = -34.603722;
     private double paradaLong = -58.381592;
 
@@ -47,12 +48,12 @@ public class Main3Activity extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         paradaId = bundle.getInt("parada_id");
+        paradaNombre = bundle.getString("parada_nombre");
         paradaLat = bundle.getDouble("parada_latitud");
         paradaLong = bundle.getDouble("parada_longitud");
 
-        System.out.println(getIntent().getStringExtra("parada_id") + " - "
-                + getIntent().getStringExtra("parada_latitud") + " - "
-                + getIntent().getStringExtra("parada_longitud"));
+        TextView ubicacionSeleccionada =(TextView) findViewById(R.id.parada_seleccionadaNombre);
+        ubicacionSeleccionada.setText(paradaNombre);
 
         paradaFragment = new ParadaSeleccionadaFragment();
         ((ParadaSeleccionadaFragment) paradaFragment).setUbicacionSeleccionada(new LatLng(paradaLat, paradaLong));
@@ -74,27 +75,27 @@ public class Main3Activity extends AppCompatActivity {
 
         np.setWrapSelectorWheel(true);
 
-        Button boton = (Button) findViewById(R.id.logTokenButton);
-        boton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                FirebaseInstanceId.getInstance().getInstanceId()
-                        .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<InstanceIdResult> task) {
-                                if (!task.isSuccessful()) {
-                                    Log.w(TAG, "getInstanceId failed", task.getException());
-                                    return;
-                                }
-
-                                // Get new Instance ID token
-                                String token = task.getResult().getToken();
-
-                                // Log and toast
-                                Log.d(TAG, token);
-                            }
-                        });
-            }
-        });
+//        Button boton = (Button) findViewById(R.id.logTokenButton);
+//        boton.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                FirebaseInstanceId.getInstance().getInstanceId()
+//                        .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+//                            @Override
+//                            public void onComplete(@NonNull Task<InstanceIdResult> task) {
+//                                if (!task.isSuccessful()) {
+//                                    Log.w(TAG, "getInstanceId failed", task.getException());
+//                                    return;
+//                                }
+//
+//                                // Get new Instance ID token
+//                                String token = task.getResult().getToken();
+//
+//                                // Log and toast
+//                                Log.d(TAG, token);
+//                            }
+//                        });
+//            }
+//        });
 
     }
 
