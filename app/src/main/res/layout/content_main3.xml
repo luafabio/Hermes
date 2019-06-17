@@ -27,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="16dp"
         android:fontFamily="@font/proxima_nova_alt_bold"
         android:text="Ingrese el tiempo de aviso:"
@@ -35,36 +35,49 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_container" />
+        app:layout_constraintTop_toBottomOf="@+id/parada_seleccionadaNombre" />
 
     <TextView
         android:id="@+id/parada_seleccionadaNombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="16dp"
-        android:fontFamily="@font/proxima_nova_alt_bold"
+        android:fontFamily="@font/proxima_nova_regular"
         android:gravity="center"
         android:text="Nombre Parada"
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/parada_seleccionadaView" />
+        app:layout_constraintTop_toBottomOf="@+id/fragment_container" />
 
-    <NumberPicker
-        android:id="@+id/np"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="172dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:fontFamily="@font/proxima_nova_alt_bold"
+    <!--<NumberPicker-->
+        <!--android:id="@+id/np"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginStart="172dp"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--android:layout_marginBottom="8dp"-->
+        <!--android:fontFamily="@font/proxima_nova_alt_bold"-->
+        <!--app:layout_constraintBottom_toTopOf="@+id/logTokenButton"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/ingrese_tiempo"-->
+        <!--app:layout_constraintVertical_bias="0.576" />-->
+
+    <com.example.hermes.HorizontalNumberPicker
+        android:id="@+id/horinzontal_picker"
+        android:name="com.example.hermes.numberpicker_horizontal"
+        android:layout_width="207dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="108dp"
         app:layout_constraintBottom_toTopOf="@+id/logTokenButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ingrese_tiempo"
-        app:layout_constraintVertical_bias="0.576" />
+        app:layout_constraintVertical_bias="0.282">
+
+    </com.example.hermes.HorizontalNumberPicker>
 
     <Button
         android:id="@+id/logTokenButton"
@@ -84,12 +97,12 @@
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/layout_border"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/parada_seleccionadaNombre" />
+        app:layout_constraintTop_toBottomOf="@+id/parada_seleccionadaView" />
 
 </android.support.constraint.ConstraintLayout>

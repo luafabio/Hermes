@@ -40,6 +40,7 @@ public class Main3Activity extends AppCompatActivity {
     private String paradaNombre;
     private double paradaLat = -34.603722;
     private double paradaLong = -58.381592;
+    private HorizontalNumberPicker np_channel_nr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,13 +68,17 @@ public class Main3Activity extends AppCompatActivity {
 
         restBing = retrofit.create(RestBing.class);
 
-        np = (NumberPicker) findViewById(R.id.np);
+        np_channel_nr = findViewById(R.id.horinzontal_picker);
 
-        np.setMinValue(0);
-        np.setMaxValue(30);
-        np.setValue(5);
 
-        np.setWrapSelectorWheel(true);
+
+//        np = (NumberPicker) findViewById(R.id.np);
+//
+//        np.setMinValue(5);
+//        np.setMaxValue(30);
+//        np.setValue(5);
+//
+//        np.setWrapSelectorWheel(true);
 
 //        Button boton = (Button) findViewById(R.id.logTokenButton);
 //        boton.setOnClickListener(new View.OnClickListener() {
@@ -110,7 +115,7 @@ public class Main3Activity extends AppCompatActivity {
 
     public void postStop(View v) {
 
-        Bing bing = new Bing(324, paradaId, getSelectedTime());
+        Bing bing = new Bing(324, paradaId, np_channel_nr.getValue());
 
         Call<Void> call = restBing.createBing(bing);
 

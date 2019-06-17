@@ -13,10 +13,8 @@
         android:id="@+id/cardview1"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
-        card_view:cardBackgroundColor="@color/colorAccent"
         card_view:contentPaddingBottom="16dp"
         card_view:contentPaddingTop="16dp"
-        card_view:cardCornerRadius="14dp"
         card_view:cardElevation="8dp">
 
         <RelativeLayout
@@ -42,7 +40,6 @@
                 android:fontFamily="@font/proxima_nova_regular"
                 android:maxLines="2"
                 android:text="Title"
-                android:textColor="#ffffff"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
         </RelativeLayout>

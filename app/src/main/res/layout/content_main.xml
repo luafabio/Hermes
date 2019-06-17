@@ -13,6 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/recycler_view"
+        android:clipToPadding="false"
+        android:paddingBottom="72dp"
         tools:listitem="@layout/bing_item"/>
 
 </android.support.constraint.ConstraintLayout>
