@@ -1,14 +1,12 @@
 package com.example.hermes;
 
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -81,10 +79,6 @@ public class Main3Activity extends AppCompatActivity {
         super.onResume();
     }
 
-    public int getSelectedTime() {
-        return (int) np.getValue();
-    }
-
     public void postStop(View v) {
 
         Log.d(TAG, tokenFirebase);
@@ -119,10 +113,7 @@ public class Main3Activity extends AppCompatActivity {
                                     return;
                                 }
 
-                                // Get new Instance ID token
                                 tokenFirebase = task.getResult().getToken();
-
-                                // Log and toast
                                 Log.d(TAG, tokenFirebase);
                             }
                         });

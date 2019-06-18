@@ -1,23 +1,39 @@
 package com.example.hermes;
 
 import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
+import android.support.annotation.NonNull;
+import android.util.Log;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 import java.util.List;
 
-public class BingViewModel extends ViewModel {
+class BingViewModel extends ViewModel {
     private BingRepository repository= new BingRepository();
 
-    public LiveData<List<Bing>> getAllBings(String token) {
+    private MutableLiveData<String> tokenLiveData = new MutableLiveData<>();
+
+    LiveData<List<Bing>> getAllBings(String token) {
         return repository.getAllBings(token);
     }
 
-//    public void createBing(Bing bing) {
-//        repository.createBing(bing);
-//    }
-//
-//    public void deleteBing(Bing bing) {
-//        repository.deleteBing(bing);
-//    }
 
+    LiveData<String> getToken(){
+        FirebaseInstanceId.getInstance().getInstanceId()
+                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                        if (!task.isSuccessful()) {
+                            return;
+                        }
+                        tokenLiveData.postValue(task.getResult().getToken());
+                    }
+                });
+        return tokenLiveData;
+    }
 }
