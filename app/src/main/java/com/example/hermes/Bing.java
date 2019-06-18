@@ -2,7 +2,7 @@ package com.example.hermes;
 
 public class Bing {
 
-    private int id_user;
+    private String id_user;
     private int id_stop;
     private int time;
     private String status;
@@ -11,22 +11,34 @@ public class Bing {
     public Bing() {
     }
 
-    public Bing(int id_user, int id_stop, int time){
+//    public Bing(int id_user, int id_stop, int time){
+//        this.id_user = id_user;
+//        this.id_stop = id_stop;
+//        this.time = time;
+//    }
+
+    public Bing(String id_user, int id_stop, int time){
         this.id_user = id_user;
         this.id_stop = id_stop;
         this.time = time;
     }
 
-    public Bing(int id_user, int id_stop, int time, String name_stop) {
-        this.id_user = id_user;
-        this.id_stop = id_stop;
-        this.time = time;
-        this.name_stop = name_stop;
-    }
+//    public Bing(int id_user, int id_stop, int time, String name_stop) {
+//        this.id_user = id_user;
+//        this.id_stop = id_stop;
+//        this.time = time;
+//        this.name_stop = name_stop;
+//    }
 
-    public int getId_user() {
+//    public int getId_user() {
+//        return id_user;
+//    }
+
+    public String getId_user() {
+
         return id_user;
     }
+
 
     public int getId_stop() {
         return id_stop;
@@ -42,7 +54,11 @@ public class Bing {
         return status;
     }
 
-    public void setId_user(int id_user) {
+//    public void setId_user(int id_user) {
+//        this.id_user = id_user;
+//    }
+
+        public void setId_user(String id_user) {
         this.id_user = id_user;
     }
 

@@ -42,6 +42,8 @@ public class Main3Activity extends AppCompatActivity {
     private double paradaLong = -58.381592;
     private HorizontalNumberPicker np_channel_nr;
 
+    private String tokenFirebase;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,37 +72,7 @@ public class Main3Activity extends AppCompatActivity {
 
         np_channel_nr = findViewById(R.id.horinzontal_picker);
 
-
-
-//        np = (NumberPicker) findViewById(R.id.np);
-//
-//        np.setMinValue(5);
-//        np.setMaxValue(30);
-//        np.setValue(5);
-//
-//        np.setWrapSelectorWheel(true);
-
-//        Button boton = (Button) findViewById(R.id.logTokenButton);
-//        boton.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                FirebaseInstanceId.getInstance().getInstanceId()
-//                        .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
-//                            @Override
-//                            public void onComplete(@NonNull Task<InstanceIdResult> task) {
-//                                if (!task.isSuccessful()) {
-//                                    Log.w(TAG, "getInstanceId failed", task.getException());
-//                                    return;
-//                                }
-//
-//                                // Get new Instance ID token
-//                                String token = task.getResult().getToken();
-//
-//                                // Log and toast
-//                                Log.d(TAG, token);
-//                            }
-//                        });
-//            }
-//        });
+        getToken();
 
     }
 
@@ -115,7 +87,9 @@ public class Main3Activity extends AppCompatActivity {
 
     public void postStop(View v) {
 
-        Bing bing = new Bing(324, paradaId, np_channel_nr.getValue());
+        Log.d(TAG, tokenFirebase);
+
+        Bing bing = new Bing(tokenFirebase, paradaId, np_channel_nr.getValue());
 
         Call<Void> call = restBing.createBing(bing);
 
@@ -132,6 +106,26 @@ public class Main3Activity extends AppCompatActivity {
                 startActivity(new Intent(Main3Activity.this, MainActivity.class));
             }
         });
+    }
+
+    public void getToken(){
+
+        FirebaseInstanceId.getInstance().getInstanceId()
+                        .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                                if (!task.isSuccessful()) {
+                                    Log.w(TAG, "getInstanceId failed", task.getException());
+                                    return;
+                                }
+
+                                // Get new Instance ID token
+                                tokenFirebase = task.getResult().getToken();
+
+                                // Log and toast
+                                Log.d(TAG, tokenFirebase);
+                            }
+                        });
     }
 
 }
