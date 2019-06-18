@@ -3,6 +3,13 @@ package com.example.hermes;
 import android.app.Application;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
+import android.support.annotation.NonNull;
+import android.util.Log;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 import java.util.List;
 
@@ -28,8 +35,11 @@ public class BingRepository {
         restBing = retrofit.create(RestBing.class);
     }
 
-    public LiveData<List<Bing>> getAllBings() {
-        restBing.getBings().enqueue(new Callback<List<Bing>>() {
+    public LiveData<List<Bing>> getAllBings(String token) {
+
+        Call<List<Bing>> call = restBing.getBings(token);
+
+        call.enqueue(new Callback<List<Bing>>() {
             @Override
             public void onResponse(Call<List<Bing>> call, Response<List<Bing>> response) {
                 allBing.postValue(response.body());

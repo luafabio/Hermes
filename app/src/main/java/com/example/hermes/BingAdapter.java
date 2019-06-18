@@ -42,7 +42,11 @@ public class BingAdapter extends RecyclerView.Adapter<BingAdapter.BingHolder> {
 
     @Override
     public int getItemCount() {
-        return bings.size();
+        if (bings == null){
+            return 0;
+        } else{
+            return bings.size();
+        }
     }
 
     public void setBings(List<Bing> bings) {
