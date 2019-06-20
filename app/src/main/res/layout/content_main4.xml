@@ -11,34 +11,36 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="253dp"
-        android:layout_height="103dp"
+        android:layout_width="255dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:fontFamily="@font/proxima_nova_alt_bold"
         android:gravity="center_horizontal"
-        android:text="Bienvenido a Hermes!"
-        android:textSize="36sp"
+        android:text="hermes"
+        android:textColor="#064F49"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.007" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="208dp"
-        android:layout_height="183dp"
+        android:layout_width="318dp"
+        android:layout_height="281dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.208"
-        app:srcCompat="@drawable/logohermes" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo_notificacion" />
 
 
 </android.support.constraint.ConstraintLayout>

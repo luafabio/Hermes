@@ -30,6 +30,9 @@ public class FcmMensajes extends FirebaseMessagingService {
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage){
+
+        Log.d(TAG, "From: " + remoteMessage.getFrom());
+
         Intent intent = new Intent(this, MainActivity.class);
         if (remoteMessage.getData().size() > 0){
             tipo = "json";
@@ -80,10 +83,10 @@ public class FcmMensajes extends FirebaseMessagingService {
             Uri sonidoUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
             NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
-                    .setSmallIcon(R.drawable.ic_vectorhermes)
                     .setContentTitle("Hermes!")
                     .setContentText("Tú colectivo está llegando!!")
-                    .setLargeIcon(BitmapFactory.decodeResource(this.getResources(),R.drawable.ic_vectorhermes))
+                    .setSmallIcon(R.mipmap.ic_launcher)
+                    .setLargeIcon(BitmapFactory.decodeResource(this.getResources(),R.drawable.logo_notificacion))
                     .setSound(sonidoUri)
                     .setAutoCancel(true);
 

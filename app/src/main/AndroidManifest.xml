@@ -3,22 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.hermes">
 
-    <!--
-         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
-         Google Maps Android API v2, but you must specify either coarse or fine
-         location permissions for the 'MyLocation' functionality.
-    -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.VIBRATE" />
 
+
+
+
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
         tools:ignore="GoogleAppIndexingWarning">
 
         <meta-data
@@ -36,7 +34,6 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -56,11 +53,17 @@
             android:parentActivityName=".Main2Activity">
         </activity>
 
-        <service android:name=".FcmMensajes">
+        <service
+            android:name=".FcmMensajes"
+            android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
+        <!--<meta-data-->
+            <!--android:name="com.google.firebase.messaging.default_notification_icon"-->
+            <!--android:resource="@drawable/logo_notificacion" />-->
     </application>
 
 </manifest>

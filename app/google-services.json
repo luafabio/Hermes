@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "935121466264-pelo7l68krlm4s60lgvegs1935te3m0e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hermes",
+            "certificate_hash": "2e96f2f9a4b94455633d43e1feaae500a59e0565"
+          }
+        },
+        {
           "client_id": "935121466264-sah4kuj6kh213fod44cub7rb2g4i40sb.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
