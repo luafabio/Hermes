@@ -10,25 +10,21 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.iid.InstanceIdResult;
 
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private BingViewModel bingViewModel;
+    public SwipeRefreshLayout swipeRefreshLayout;
     private static final String TAG = "MainActivity";
     private String tokenFirebase;
 
@@ -37,6 +33,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                bingViewModel.getAllBings(tokenFirebase);
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
         bingViewModel = ViewModelProviders.of(this).get(BingViewModel.class);
         final BingAdapter adapter = new BingAdapter();
 
@@ -50,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
                     public void onChanged(@Nullable List<Bing> bings) {
                         adapter.setBings(bings);
                         adapter.notifyDataSetChanged();
-                        Log.d(TAG, tokenFirebase);
                     }
                 });
             }

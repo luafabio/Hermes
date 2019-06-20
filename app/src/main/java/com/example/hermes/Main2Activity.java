@@ -5,34 +5,19 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
-
-import com.example.hermes.fragments.ParadaSeleccionadaFragment;
 
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-
-//import com.google.android.gms.tasks.OnCompleteListener;
-//import com.google.android.gms.tasks.Task;
-//import com.google.firebase.iid.FirebaseInstanceId;
-//import com.google.firebase.iid.InstanceIdResult;
 
 public class Main2Activity extends AppCompatActivity implements StopAdapter.OnParadaListener {
 
     private List<Stop> stops;
     private StopViewModel stopViewModel;
-
+    public SwipeRefreshLayout swipeRefreshLayout;
     private StopAdapter adapter;
 
 
@@ -41,6 +26,14 @@ public class Main2Activity extends AppCompatActivity implements StopAdapter.OnPa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
+        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                stopViewModel.getAllStops();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
         RecyclerView recyclerViewParadas = findViewById(R.id.recycler_view);
         recyclerViewParadas.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewParadas.setHasFixedSize(true);

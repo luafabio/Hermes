@@ -29,13 +29,7 @@ public class BingAdapter extends RecyclerView.Adapter<BingAdapter.BingHolder> {
         Bing currentBing = bings.get(i);
         bingHolder.textViewStop.setText(String.valueOf(currentBing.getName_stop()));
         bingHolder.textViewTime.setText(String.valueOf(currentBing.getTime()));
-        System.out.println(currentBing.getStatus());
-//        bingHolder.textViewStatus.setText(currentBing.getStatus());
-//        if (currentBing.getStatus().equals("created")){
-//            bingHolder.alarmaView.setCardBackgroundColor(15);
-//        } else if (currentBing.getStatus().equals("finalizada")) {
-//            bingHolder.alarmaView.setCardBackgroundColor(0);
-//        }
+        bingHolder.textViewStatus.setText(String.valueOf(currentBing.getStatus()));
     }
 
     @Override
@@ -64,7 +58,7 @@ public class BingAdapter extends RecyclerView.Adapter<BingAdapter.BingHolder> {
             alarmaView = itemView.findViewById(R.id.cardview1);
             textViewStop = itemView.findViewById(R.id.text_view_stop);
             textViewTime = itemView.findViewById(R.id.text_view_time);
-//            textViewStatus = itemView.findViewById(R.id.text_view_status);
+            textViewStatus = itemView.findViewById(R.id.text_view_status);
         }
     }
 }
