@@ -4,6 +4,7 @@ import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -27,11 +28,22 @@ public class Main2Activity extends AppCompatActivity implements StopAdapter.OnPa
         setContentView(R.layout.activity_main2);
 
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);
+
+        swipeRefreshLayout.setColorSchemeColors(
+                getResources().getColor(android.R.color.holo_blue_bright),
+                getResources().getColor(android.R.color.holo_green_light)
+        );
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 stopViewModel.getAllStops();
-                swipeRefreshLayout.setRefreshing(false);
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override public void run() {
+                        // Stop animation (This will be after 3 seconds)
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
+                }, 2000); // Delay in millis
             }
         });
         RecyclerView recyclerViewParadas = findViewById(R.id.recycler_view);
