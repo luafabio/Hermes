@@ -85,7 +85,7 @@ public class FcmMensajes extends FirebaseMessagingService {
             NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
                     .setContentTitle("Hermes!")
                     .setContentText("Tú colectivo está llegando!!")
-                    .setSmallIcon(R.mipmap.ic_launcher)
+                    .setSmallIcon(R.drawable.ic_stat_name)
                     .setLargeIcon(BitmapFactory.decodeResource(this.getResources(),R.drawable.logo_notificacion))
                     .setSound(sonidoUri)
                     .setAutoCancel(true);
