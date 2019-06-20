@@ -52,6 +52,10 @@
             android:label="Finalizá tu Alarma"
             android:parentActivityName=".Main2Activity">
         </activity>
+        <activity
+            android:name=".AcercaDeNosotros"
+            android:parentActivityName=".MainActivity">
+        </activity>
 
         <service
             android:name=".FcmMensajes"
