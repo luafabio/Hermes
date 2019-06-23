@@ -67,6 +67,7 @@ public class FcmMensajes extends FirebaseMessagingService {
         NotificationManager notificationManagerA = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+
             String CHANNEL_ID = "my_channel_01";
             CharSequence name = "my_channel";
             String Description = "This is my channel";
@@ -85,7 +86,7 @@ public class FcmMensajes extends FirebaseMessagingService {
             NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
                     .setContentTitle("Hermes!")
                     .setContentText("Tú colectivo está llegando!!")
-                    .setSmallIcon(R.drawable.ic_stat_name_xxxhdpi)
+                    .setSmallIcon(R.drawable.ic_stat_name)
                     .setLargeIcon(BitmapFactory.decodeResource(this.getResources(),R.drawable.logo_notificacion))
                     .setSound(sonidoUri)
                     .setAutoCancel(true);
@@ -103,29 +104,31 @@ public class FcmMensajes extends FirebaseMessagingService {
 
             notificationManagerA.notify(NOTIFICATION_ID, builder.build());
 
-        }
+        } else {
 
-//        Intent intent = new Intent(this, MainActivity.class);
-//        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,
-//                intent, PendingIntent.FLAG_ONE_SHOT);
-//        NotificationCompat.Builder constructorDeNotificion =
-//                new NotificationCompat.Builder(this);
-//        constructorDeNotificion.setContentTitle("");
-//        constructorDeNotificion.setContentText("");
-//        Uri sonidoUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-//        constructorDeNotificion.setSound(sonidoUri);
-//        constructorDeNotificion.setSmallIcon(R.mipmap.ic_launcher);
-//        constructorDeNotificion.setLargeIcon(
-//                BitmapFactory.decodeResource(this.getResources(),R.mipmap.ic_launcher));
-//        constructorDeNotificion.setAutoCancel(true);
-//        Vibrator v = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
-//        v.vibrate(1000);
-//        constructorDeNotificion.setContentIntent(pendingIntent);
-//        NotificationManager notificationManager =
-//                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-//
-//        notificationManager.notify(0,constructorDeNotificion.build());
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,
+                    intent, PendingIntent.FLAG_ONE_SHOT);
+            NotificationCompat.Builder constructorDeNotificion =
+                    new NotificationCompat.Builder(this);
+            constructorDeNotificion.setContentTitle("");
+            constructorDeNotificion.setContentText("");
+            Uri sonidoUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+            constructorDeNotificion.setSound(sonidoUri);
+            constructorDeNotificion.setSmallIcon(R.mipmap.ic_launcher);
+            constructorDeNotificion.setLargeIcon(
+                    BitmapFactory.decodeResource(this.getResources(), R.mipmap.ic_launcher));
+            constructorDeNotificion.setAutoCancel(true);
+            Vibrator v = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
+            v.vibrate(1000);
+            constructorDeNotificion.setContentIntent(pendingIntent);
+            NotificationManager notificationManager =
+                    (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+            notificationManager.notify(0, constructorDeNotificion.build());
+
+        }
 
     }
 }
