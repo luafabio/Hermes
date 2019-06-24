@@ -84,8 +84,8 @@ public class FcmMensajes extends FirebaseMessagingService {
             Uri sonidoUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
             NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
-                    .setContentTitle("Hermes!")
-                    .setContentText("Tú colectivo está llegando!!")
+                    .setContentTitle("Hermes")
+                    .setContentText("Tú colectivo está llegando!")
                     .setSmallIcon(R.drawable.ic_stat_name)
                     .setLargeIcon(BitmapFactory.decodeResource(this.getResources(),R.drawable.logo_notificacion))
                     .setSound(sonidoUri)
@@ -112,8 +112,8 @@ public class FcmMensajes extends FirebaseMessagingService {
                     intent, PendingIntent.FLAG_ONE_SHOT);
             NotificationCompat.Builder constructorDeNotificion =
                     new NotificationCompat.Builder(this);
-            constructorDeNotificion.setContentTitle("Hermes!");
-            constructorDeNotificion.setContentText("Tú colectivo está llegando!!");
+            constructorDeNotificion.setContentTitle("Hermes");
+            constructorDeNotificion.setContentText("Tú colectivo está llegando!");
             Uri sonidoUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
             constructorDeNotificion.setSound(sonidoUri);
             constructorDeNotificion.setSmallIcon(R.drawable.ic_stat_name);
