@@ -18,7 +18,7 @@
         android:usesCleartextTraffic="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_launchert"
         android:roundIcon="@mipmap/ic_launchert_round"
         tools:ignore="GoogleAppIndexingWarning">
 
