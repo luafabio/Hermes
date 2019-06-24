@@ -112,13 +112,13 @@ public class FcmMensajes extends FirebaseMessagingService {
                     intent, PendingIntent.FLAG_ONE_SHOT);
             NotificationCompat.Builder constructorDeNotificion =
                     new NotificationCompat.Builder(this);
-            constructorDeNotificion.setContentTitle("");
-            constructorDeNotificion.setContentText("");
+            constructorDeNotificion.setContentTitle("Hermes!");
+            constructorDeNotificion.setContentText("Tú colectivo está llegando!!");
             Uri sonidoUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
             constructorDeNotificion.setSound(sonidoUri);
-            constructorDeNotificion.setSmallIcon(R.mipmap.ic_launcher);
+            constructorDeNotificion.setSmallIcon(R.drawable.ic_stat_name);
             constructorDeNotificion.setLargeIcon(
-                    BitmapFactory.decodeResource(this.getResources(), R.mipmap.ic_launcher));
+                    BitmapFactory.decodeResource(this.getResources(), R.drawable.logo_notificacion));
             constructorDeNotificion.setAutoCancel(true);
             Vibrator v = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
             v.vibrate(1000);

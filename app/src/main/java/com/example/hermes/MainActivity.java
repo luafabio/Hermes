@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onChanged(@Nullable String token) {
                 tokenFirebase = token;
+                Log.d(TAG, tokenFirebase);
                 bingViewModel.getAllBings(tokenFirebase).observe(MainActivity.this, new Observer<List<Bing>>(){
                     @Override
                     public void onChanged(@Nullable List<Bing> bings) {
