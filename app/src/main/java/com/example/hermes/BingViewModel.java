@@ -26,7 +26,6 @@ public class BingViewModel extends ViewModel {
         return repository.getAllBings(token);
     }
 
-
     LiveData<String> getToken(){
         FirebaseInstanceId.getInstance().getInstanceId()
                 .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {

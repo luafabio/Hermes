@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +30,7 @@ public class Main3Activity extends AppCompatActivity {
     private Retrofit retrofit;
     private RestBing restBing;
 
+    private Button boton;
     private NumberPicker np;
     private static final String TAG = "Main3Activity";
 
@@ -53,7 +55,10 @@ public class Main3Activity extends AppCompatActivity {
         paradaLat = bundle.getDouble("parada_latitud");
         paradaLong = bundle.getDouble("parada_longitud");
 
-        TextView ubicacionSeleccionada =(TextView) findViewById(R.id.parada_seleccionadaNombre);
+        boton = (Button) findViewById(R.id.logTokenButton);
+        boton.setEnabled(true);
+
+        TextView ubicacionSeleccionada = (TextView) findViewById(R.id.parada_seleccionadaNombre);
         ubicacionSeleccionada.setText(paradaNombre);
 
         paradaFragment = new ParadaSeleccionadaFragment();
@@ -81,6 +86,8 @@ public class Main3Activity extends AppCompatActivity {
 
     public void postStop(View v) {
 
+        boton.setEnabled(false);
+
         Log.d(TAG, tokenFirebase);
 
         Bing bing = new Bing(tokenFirebase, paradaId, np_channel_nr.getValue());
@@ -90,7 +97,14 @@ public class Main3Activity extends AppCompatActivity {
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                Toast.makeText(Main3Activity.this, "Alarma creada de manera exitosa", Toast.LENGTH_SHORT).show();
+
+                if (response.isSuccessful()) {
+                    Toast.makeText(Main3Activity.this, "Alarma creada de manera exitosa", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(Main3Activity.this, "No se ha podido crear la alarma", Toast.LENGTH_SHORT).show();
+                }
+
                 startActivity(new Intent(Main3Activity.this, MainActivity.class));
             }
 

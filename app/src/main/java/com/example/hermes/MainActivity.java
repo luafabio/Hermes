@@ -36,13 +36,15 @@ public class MainActivity extends AppCompatActivity {
     private String tokenFirebase;
 
     private String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission
-            .ACCESS_FINE_LOCATION, Manifest.permission.READ_PHONE_STATE};
+            .ACCESS_FINE_LOCATION, Manifest.permission.READ_PHONE_STATE,
+            Manifest.permission.ACCESS_COARSE_LOCATION};
     private int permission_all = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);
 

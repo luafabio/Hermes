@@ -39,7 +39,6 @@ public class Main2Activity extends AppCompatActivity implements StopAdapter.OnPa
 
                 new Handler().postDelayed(new Runnable() {
                     @Override public void run() {
-                        // Stop animation (This will be after 3 seconds)
                         swipeRefreshLayout.setRefreshing(false);
                     }
                 }, 2000); // Delay in millis

@@ -2,6 +2,7 @@ package com.example.hermes;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -31,8 +32,10 @@ public class BingRepository {
         Call<List<Bing>> call = restBing.getBings(token);
 
         call.enqueue(new Callback<List<Bing>>() {
+
             @Override
             public void onResponse(Call<List<Bing>> call, Response<List<Bing>> response) {
+
                 allBing.postValue(response.body());
             }
 
