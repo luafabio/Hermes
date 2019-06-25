@@ -38,7 +38,7 @@ public class BingViewModel extends ViewModel {
                         tokenLiveData.postValue(task.getResult().getToken());
                         System.out.println("TOKEN:" + task.getResult().getToken());
                     }
-                });g
+                });
         return tokenLiveData;
     }
 }

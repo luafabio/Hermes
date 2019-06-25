@@ -13,6 +13,8 @@ public class Main4Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main4);
 
+
+
         @SuppressLint("StaticFieldLeak")
         AsyncTask<String, String, String> carga = new AsyncTask<String, String, String>() {
             @Override
@@ -41,5 +43,7 @@ public class Main4Activity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
     }
+
+
 
 }
