@@ -13,7 +13,11 @@ import com.google.firebase.iid.InstanceIdResult;
 
 import java.util.List;
 
-class BingViewModel extends ViewModel {
+public class BingViewModel extends ViewModel {
+
+    public BingViewModel() {
+    }
+
     private BingRepository repository= new BingRepository();
 
     private MutableLiveData<String> tokenLiveData = new MutableLiveData<>();
@@ -32,8 +36,9 @@ class BingViewModel extends ViewModel {
                             return;
                         }
                         tokenLiveData.postValue(task.getResult().getToken());
+                        System.out.println("TOKEN:" + task.getResult().getToken());
                     }
-                });
+                });g
         return tokenLiveData;
     }
 }

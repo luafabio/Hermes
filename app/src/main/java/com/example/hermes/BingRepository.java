@@ -38,6 +38,7 @@ public class BingRepository {
 
             @Override
             public void onFailure(Call<List<Bing>> call, Throwable t) {
+                System.out.println("ERROR" + t);
             }
         });
         return allBing;
