@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.hermes.Main2Activity">
+
+    <item
+    android:id="@+id/mapa_de_paradas"
+    android:orderInCategory="100"
+    android:title="@string/lista_de_paradas"
+    app:showAsAction="never" />
+
+</menu>

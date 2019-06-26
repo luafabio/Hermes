@@ -10,6 +10,8 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import java.util.List;
@@ -21,6 +23,9 @@ public class Main2Activity extends AppCompatActivity implements StopAdapter.OnPa
     public SwipeRefreshLayout swipeRefreshLayout;
     private StopAdapter adapter;
 
+    private String[] listaDeNombres = null;
+    private double[] listaDeLatitudes = null;
+    private double[] listaDeLongitudes = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,13 +68,6 @@ public class Main2Activity extends AppCompatActivity implements StopAdapter.OnPa
 
     }
 
-    public void siguiente(View v){
-        Intent intent = new Intent(Main2Activity.this, Main3Activity.class);
-//        intent.putExtra("parada_id", this.getSelectedStop().getNum_stop());
-//        intent.putExtra("retrofit_objeto", this.getRetrofit());
-        startActivity(intent);
-    }
-
     @Override
     public void onParadaClick(int position) {
         Intent intent = new Intent(this, Main3Activity.class);
@@ -79,11 +77,63 @@ public class Main2Activity extends AppCompatActivity implements StopAdapter.OnPa
         bundle.putDouble("parada_longitud", stops.get(position).getLng());
         bundle.putString("parada_nombre", stops.get(position).getName());
         intent.putExtras(bundle);
-//        System.out.println("ID - " + stops.get(position).getNum_stop());
-//        System.out.println("LAT - " + stops.get(position).getLat());
-//        System.out.println("LONG - " + stops.get(position).getLng());
         startActivity(intent);
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_lista_paradas, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.mapa_de_paradas:
+
+                if (stops != null) {
+
+                    cargaDeListas();
+
+                    Intent intentMapa = new Intent(this, MapsActivity.class);
+                    Bundle bundleMapa = new Bundle();
+                    bundleMapa.putStringArray("lista_nombres", this.listaDeNombres);
+                    bundleMapa.putDoubleArray("lista_latitudes", this.listaDeLatitudes);
+                    bundleMapa.putDoubleArray("lista_longitudes", this.listaDeLongitudes);
+                    intentMapa.putExtras(bundleMapa);
+                    startActivity(intentMapa);
+                }
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+    }
+
+    private void cargaDeListas(){
+
+//        if (stops.size() != listaDeNombres.length ||
+//                stops.size() != listaDeLatitudes.length ||
+//                stops.size() != listaDeLongitudes.length){
+            this.listaDeNombres = new String[stops.size()];
+            this.listaDeLatitudes = new double[stops.size()];
+            this.listaDeLongitudes = new double[stops.size()];
+//        }
+
+        int i = 0;
+        for (Stop parada : stops) {
+
+            this.listaDeNombres[i] = parada.getName();
+            this.listaDeLatitudes[i] = parada.getLat();
+            this.listaDeLongitudes[i] = parada.getLng();
+
+            i++;
+        }
+
+        return;
+    }
+
 }
 
 

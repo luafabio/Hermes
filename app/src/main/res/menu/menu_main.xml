@@ -3,21 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.hermes.MainActivity">
 
-    <!--<item-->
-        <!--android:id="@+id/action_settings"-->
-        <!--android:orderInCategory="100"-->
-        <!--android:title="@string/action_settings"-->
-        <!--app:showAsAction="never" />-->
-
     <item
         android:id="@+id/acerca_de_nosotros"
         android:orderInCategory="100"
         android:title="@string/acerca_de_nosotros"
         app:showAsAction="never" />
 
-    <!--<item-->
-        <!--android:id="@+id/mapa_de_paradas"-->
-        <!--android:orderInCategory="100"-->
-        <!--android:title="@string/lista_de_paradas"-->
-        <!--app:showAsAction="never" />-->
 </menu>

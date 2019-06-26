@@ -22,8 +22,6 @@
             tools:layout_editor_absoluteX="-16dp"
             tools:layout_editor_absoluteY="8dp"
             tools:listitem="@layout/parada_item"/>
-        <!--<padding android:left="10dp" android:top="10dp"-->
-        <!--android:right="10dp" android:bottom="10dp" />-->
 
     </android.support.v4.widget.SwipeRefreshLayout>
 

@@ -27,7 +27,8 @@
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/google_maps_key">
+            android:label="@string/google_maps_key"
+            android:parentActivityName=".Main2Activity">
         </activity>
         <activity
             android:name=".Main4Activity"
@@ -56,6 +57,7 @@
         </activity>
         <activity
             android:name=".AcercaDeNosotros"
+            android:label="Acerca de Nosotros"
             android:parentActivityName=".MainActivity">
         </activity>
 
