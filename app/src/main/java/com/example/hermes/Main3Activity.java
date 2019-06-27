@@ -2,6 +2,7 @@ package com.example.hermes;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -30,11 +31,10 @@ public class Main3Activity extends AppCompatActivity {
     private Retrofit retrofit;
     private RestBing restBing;
 
-    private Button boton;
-    private NumberPicker np;
     private static final String TAG = "Main3Activity";
 
     private Fragment paradaFragment;
+    private long mLastClickTime = 0;
 
     private int paradaId;
     private String paradaNombre;
@@ -55,8 +55,6 @@ public class Main3Activity extends AppCompatActivity {
         paradaLat = bundle.getDouble("parada_latitud");
         paradaLong = bundle.getDouble("parada_longitud");
 
-        boton = (Button) findViewById(R.id.logTokenButton);
-        boton.setEnabled(true);
 
         TextView ubicacionSeleccionada = (TextView) findViewById(R.id.parada_seleccionadaNombre);
         ubicacionSeleccionada.setText(paradaNombre);
@@ -86,7 +84,10 @@ public class Main3Activity extends AppCompatActivity {
 
     public void postStop(View v) {
 
-        boton.setEnabled(false);
+        if (SystemClock.elapsedRealtime() - mLastClickTime < 1000) {
+            return;
+        }
+        mLastClickTime = SystemClock.elapsedRealtime();
 
         Log.d(TAG, tokenFirebase);
 
@@ -103,6 +104,8 @@ public class Main3Activity extends AppCompatActivity {
                 }
                 else {
                     Toast.makeText(Main3Activity.this, "No se ha podido crear la alarma", Toast.LENGTH_SHORT).show();
+                    System.out.println(response);
+                    System.out.println(response.code());
                 }
 
                 startActivity(new Intent(Main3Activity.this, MainActivity.class));
